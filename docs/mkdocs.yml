@@ -1,0 +1,34 @@
+site_name: Awdible
+
+site_description:  "Awdible : Just the best free version of audible"
+theme: readthedocs
+
+site_url: https://alexandregazagnes.github.io/awdible/
+repo_name: 'AlexandreGazagnes/awdible'
+repo_url: 'https://github.com/AlexandreGazagnes/awdible'
+edit_uri: 'edit/master/docs/docs'
+
+extra:
+  repo_icon: 'github'
+
+nav:
+  - Home: index.md
+  # - About: about.md
+  - Installation : installation.md
+  - Usage : usage.md
+  # - API Reference : api-reference.md
+  - Contributing : contributing.md
+  - Changelog : changelog.md
+  - Security : security.md
+  - Code of Conduct : code_of_conduct.md
+  # - Releases : releases.md
+  # - Troubleshooting : troubleshooting.md
+
+# markdown_extensions:
+#   - pymdownx.highlight:
+#       anchor_linenums: true
+#   - admonition
+#   - pymdownx.details
+#   - pymdownx.inlinehilite
+#   - pymdownx.snippets
+#   - pymdownx.superfences
