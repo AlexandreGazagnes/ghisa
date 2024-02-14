@@ -11,7 +11,7 @@
 ![Pypi](https://github.com/AlexandreGazagnes/ghisa/actions/workflows/publish.yaml/badge.svg)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlexandreGazagnes/ghisa)
 
-# ghisa - Just the best free version of audible
+# ghisa
 
 ## About
 <!-- ghisa is a free and open-source software, app and python package that allows you to download music from youtube and convert it to mp3.

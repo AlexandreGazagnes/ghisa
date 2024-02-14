@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ghisa"
-version = "0.0.0"
+version = "0.0.1"
 description = "ghisa is a GitHub Import Stats Analyzer"
 license = "BSD-3-Clause"
 authors = ["AlexandreGazagnes <alex@gazagnes.net>",]

@@ -9,7 +9,7 @@ from cleo.helpers import argument, option
 
 import streamlit.web.cli as cli
 
-from awdible.gui.front import *
+from ghisa.gui.front import *
 
 
 class GuiCommand(Command):
@@ -20,10 +20,4 @@ class GuiCommand(Command):
 
     def handle(self):
         self.line("Launching Streamlit Web App...")
-
-        # dirname = os.path.dirname(__file__)
-        # filename = os.path.join(dirname, "awdible", "gui", "front.py")
-        # args = []
-        # cli._main_run(filename, args)
-
         os.system("streamlit run awdible/gui/front.py")

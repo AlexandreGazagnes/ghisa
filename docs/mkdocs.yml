@@ -1,11 +1,11 @@
-site_name: Awdible
+site_name: ghisa
 
-site_description:  "Awdible : Just the best free version of audible"
+site_description:  "ghisa : Just the best free version of audible"
 theme: readthedocs
 
-site_url: https://alexandregazagnes.github.io/awdible/
-repo_name: 'AlexandreGazagnes/awdible'
-repo_url: 'https://github.com/AlexandreGazagnes/awdible'
+site_url: https://alexandregazagnes.github.io/ghisa/
+repo_name: 'AlexandreGazagnes/ghisa'
+repo_url: 'https://github.com/AlexandreGazagnes/ghisa'
 edit_uri: 'edit/master/docs/docs'
 
 extra:
