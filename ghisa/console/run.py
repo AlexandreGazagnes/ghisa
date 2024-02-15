@@ -12,18 +12,18 @@ from ghisa.logger import logger
 
 
 class RunCommand(Command):
-    """Run Awdible session"""
+    """Run Ghisa session"""
 
     name = "run"
 
-    description = "Run Awdible session"
+    description = "Run Ghisa session"
 
     arguments = [
         argument(
             "url",
             description="The url to analyze.",
             optional=True,
-            # default=Awdible.DEFAULT_VIDEO_URL,
+            # default=Ghisa.DEFAULT_VIDEO_URL,
         )
     ]
     options = [
@@ -32,32 +32,32 @@ class RunCommand(Command):
             "d",
             description="The destination directory of the file",
             flag=False,
-            default=Awdible.DEFAULT_DEST,
+            default=Ghisa.DEFAULT_DEST,
         ),
         option(
             "file",
             "f",
-            description="The input file With list of urls/videos",
+            description="The input file with list of [...]",
             flag=False,
+            default=Ghisa.DEFAULT_FILE,
         ),
         option(
             "output",
             "o",
             description="The output file name",
             flag=False,
-            default=Awdible.DEFAULT_OUTPUT,
+            default=Ghisa.DEFAULT_OUTPUT,
         ),
         option(
             "search",
             "s",
-            description="If set, the video argument will be treated as a search query and the first result will be downloaded.",
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec odio nec urna tincidunt tincidunt",
             flag=True,
         ),
         option(
             "asynchronous",
             "a",
-            description="If set, the download will be asynchronous.",
-            # This means that the download will be done in the background and the command will return immediately. The download progress can be checked using the `awdible progress` command.
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec odio nec urna tincidunt tincidunt",
             flag=True,
         ),
     ]
@@ -77,17 +77,18 @@ class RunCommand(Command):
         search = self.option("search")
         asynchronous = self.option("asynchronous")
 
-        # useless logging
-        logger.debug(f"url: {url}")
+        # # useless logging
+        # logger.debug(f"url: {url}")
 
-        logger.debug(f"dest: {dest}")
-        logger.debug(f"file: {file}")
-        logger.debug(f"output: {output}")
+        # logger.debug(f"dest: {dest}")
+        # logger.debug(f"file: {file}")
+        # logger.debug(f"output: {output}")
 
-        logger.debug(f"search: {search}")
-        logger.debug(f"asynchronous: {asynchronous}")
+        # logger.debug(f"search: {search}")
+        # logger.debug(f"asynchronous: {asynchronous}")
 
         self.line("Eh! I'm running the command")
+
         Ghisa(
             url=url,
             dest=dest,

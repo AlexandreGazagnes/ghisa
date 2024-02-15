@@ -1,6 +1,6 @@
 site_name: ghisa
 
-site_description:  "ghisa : Just the best free version of audible"
+site_description:  "ghisa : Just a new app ! "
 theme: readthedocs
 
 site_url: https://alexandregazagnes.github.io/ghisa/
@@ -13,7 +13,6 @@ extra:
 
 nav:
   - Home: index.md
-  # - About: about.md
   - Installation : installation.md
   - Usage : usage.md
   # - API Reference : api-reference.md

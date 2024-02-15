@@ -20,4 +20,4 @@ class GuiCommand(Command):
 
     def handle(self):
         self.line("Launching Streamlit Web App...")
-        os.system("streamlit run awdible/gui/front.py")
+        os.system("streamlit run ghisa/gui/front.py")

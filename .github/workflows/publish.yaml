@@ -10,6 +10,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    # You need to create a secret environment name publish-secrets WITH PUBLISH_REGISTRY_PASSWORD key
+    
+    # environment : publish-secrets
+    # env:
+    #   RAPID_API_HOST: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}
+
+
     permissions:
       contents: write
 
@@ -18,7 +25,7 @@ jobs:
       - name: Publish PyPi package
         uses: code-specialist/pypi-poetry-publish@v1
         with:
-          PACKAGE_DIRECTORY: "./awdible/"
+          PACKAGE_DIRECTORY: "./this/"
           PYTHON_VERSION: "3.10.12"
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}

@@ -163,6 +163,11 @@ cython_debug/
 
 data/
 
+tmp/
+log/
+logs/
+
+
 *.pyc
 __pycache__/
 
