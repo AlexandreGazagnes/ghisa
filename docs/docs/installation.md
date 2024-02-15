@@ -15,7 +15,7 @@ It is recommended to use a virtual environment to install the package.
 Installing the package :
 
 ```bash
-pip install awdible [--upgrade] [--user]
+pip install the-package [--upgrade] [--user]
 
 ```
 
@@ -26,7 +26,7 @@ It is recommended to use a virtual environment to install the package.
 ```bash
 pip install poetry
 poetry init
-poetry add awdible
+poetry add the-package
 ```
 
 
@@ -36,11 +36,11 @@ poetry add awdible
 You can check the installation by running the following command :
 
 ```bash
-pip show awdible
+pip show the-package
 ```
 
 or
 
 ```bash
-pip list | grep awdible
+pip list | grep the-package
 ```

@@ -1,5 +1,5 @@
-FROM sktransf:base
+FROM ghisa:base
 
 WORKDIR /app
 
-RUN python3 -m pip install scikit-transformers IPython --no-cache-dir
+RUN python3 -m pip install ghisa IPython --no-cache-dir

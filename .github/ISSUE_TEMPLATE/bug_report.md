@@ -6,18 +6,31 @@ labels: ""
 assignees: ""
 ---
 
+# Bug report
+
+
+
+## Acknowledgement
+
+<!-- - [ ] I read the [documentation page](https://alexandregazagnes.github.io/awdible/)
+      before writing a new bug report -->
+- [ ] I read the [contributing page](https://alexandregazagnes.github.io/awdible/CONTRIBUTING/)
+- [ ] I read the [code of conduct](https://alexandregazagnes.github.io/awdible/CODE_OF_CONDUCT/)
+- [ ] I read the [troubleshooting page](https://alexandregazagnes.github.io/awdible/TROUBLESHOOTING/)
+      before writing a new bug report 
+- [ ] I read the [security policy](https://alexandregazagnes.github.io/awdible/SECURITY/)
+- [ ] I read the [issues page](https://alexandregazagnes.github.io/awdible/issues/)
+- [ ] I read the [project page](https://github.com/users/AlexandreGazagnes/projects/6)
+
+
 ## General
 
 - **Operating System**:
 - **Python version**:
-- **awdible version**:
+- **thisversion**:
 
-## Acknowledgement
 
-- [ ] I read the [documentation page](https://alexandregazagnes.github.io/awdible/)
-      before writing a new bug report
-
-## Bug description
+##  Description
 
 
 ### Context

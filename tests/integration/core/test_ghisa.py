@@ -1,5 +1,5 @@
 """
-Test the ghisa class.
+Integration test the ghisa class.
 """
 
 import pytest
@@ -10,7 +10,7 @@ from ghisa.logger import logger
 from ghisa.config import config
 
 
-class TestGhisa:
+class TestIntergrationGhisa:
     """Test the ghisa class."""
 
     def test___init__(self):

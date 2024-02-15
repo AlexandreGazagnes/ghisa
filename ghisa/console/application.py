@@ -4,8 +4,8 @@ Console Application
 
 from cleo.application import Application
 
-from awdible.console.gui import GuiCommand
-from awdible.console.run import RunCommand
+from ghisa.console.gui import GuiCommand
+from ghisa.console.run import RunCommand
 
 # from cleo.commands.command import Command
 # from cleo.helpers import argument, option
@@ -40,4 +40,4 @@ if __name__ == "__main__":
 
     application.run()
 
-    # main()
+    main()
