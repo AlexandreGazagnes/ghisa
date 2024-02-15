@@ -3,8 +3,9 @@ Configurations for the app
 """
 
 import os
-import dotenv
-from dotenv import dotenv_values
+
+# import dotenv
+# from dotenv import dotenv_values
 
 from .logger import logger
 

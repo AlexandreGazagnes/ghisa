@@ -38,3 +38,51 @@ class Number(Validator):
             raise TypeError(
                 f"Expected {self.private_name[1:]} to be an int or float : received {type(value)} for {value}"
             )
+
+
+class GhProfileUrl(Validator):
+    """Validator for the profile url"""
+
+    def validate(self, value):
+        if not isinstance(value, str):
+            raise TypeError(
+                f"Expected {self.private_name[1:]} to be a string : received {type(value)} for {value}"
+            )
+        if not value.startswith("https://github.com"):
+            raise ValueError(
+                f"Expected {self.private_name[1:]} to be a github url : received {value}"
+            )
+
+        value = value.split("/tree/")[0]
+        value = value.removesuffix("/")
+
+        value = [i for i in value if i == "/"]
+
+        if len(value) != 4:
+            raise ValueError(
+                f"Expected {self.private_name[1:]} to be a github url : received {value}"
+            )
+
+
+class GhRepository(Validator):
+    """Validator for the profile url"""
+
+    def validate(self, value):
+        if not isinstance(value, str):
+            raise TypeError(
+                f"Expected {self.private_name[1:]} to be a string : received {type(value)} for {value}"
+            )
+        if not value.startswith("https://github.com"):
+            raise ValueError(
+                f"Expected {self.private_name[1:]} to be a github url : received {value}"
+            )
+
+        value = value.split("/tree/")[0]
+        value = value.removesuffix("/")
+
+        value = [i for i in value if i == "/"]
+
+        if len(value) != 3:
+            raise ValueError(
+                f"Expected {self.private_name[1:]} to be a github url : received {value}"
+            )

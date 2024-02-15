@@ -59,6 +59,8 @@ python = "3.10.12"
 
 # [tool.poetry.group.front.dependencies]
 # streamlit = "^1.29.0"
+beautifulsoup4 = "^4.12.3"
+requests = "^2.31.0"
 
 
 [tool.poetry.group.dev.dependencies]
