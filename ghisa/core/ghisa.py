@@ -5,7 +5,12 @@ Ghisa is a library to crawl and analyze the data from github.
 import os
 import glob
 
+import shutil
+
+import pandas as pd
+
 import requests
+import logging
 from bs4 import BeautifulSoup
 
 from .helpers import get_import, extract_from_import_line, counter
@@ -18,12 +23,16 @@ class Ghisa:
     DEFAULT_REPO = repo_url = "https://github.com/MentalDeFer972/project2py-ocr"
     DEFAULT_TMP = "tmp"
 
-    def __init__(self, config={}, tmp=None, test_mode=False):
+    DEFAULT_DEST = "./result.txt"
+
+    def __init__(self, config={}, tmp=None, test_mode=False, limit=20, dest=None):
         """Constructor of the class. It takes the url of the website to be"""
 
         # self.url = url
         self.config = config
+        self.dest = dest if dest else self.DEFAULT_DEST
 
+        self.limit = limit
         self.test_mode = test_mode
         self.url = ""
         self.repo_url = ""
@@ -35,28 +44,18 @@ class Ghisa:
 
         self.tmp: str = self.DEFAULT_TMP if not tmp else tmp
 
-    def crawl_repo(self, repo_url: None):
+    def crawl_repo(self, url: None):
         """Method to crawl the repository"""
 
-        self._clone_repo(repo_url)
+        self.repo_url = url
+
+        self._clone_repo(url)
 
         self._make_file_list()
 
         imports = self._count_imports()
 
         return imports
-
-    # def craw_profile(self, url):
-    #     """Method to crawl the profile"""
-    #     pass
-
-    # def get_repo(self, url):
-    #     """Method to get the repository"""
-    #     pass
-
-    # def get_profile(self, url):
-    #     """Method to get the profile"""
-    #     pass
 
     def _clone_repo(self, repo_url):
         """Clone the repository"""
@@ -97,19 +96,52 @@ class Ghisa:
 
         return counter(import_list)
 
-    def craw_profile(self, profile_url):
+    def craw_profile(self, url):
         """Method to crawl the profile"""
 
-        dict_ = {}
+        df = []
 
-        self.profile_url = profile_url
+        self.profile_url = url
 
-        soup = make_soup()
-        repos = extract_repositories(soup)
+        soup = make_soup(url)
+        repos = extract_repositories(soup, url)
 
-        repos = self.get_repos(profile_url)
+        logging.info(repos)
 
-        for repo in repos:
-            dict_[repo] = self.crawl_repo(repo)
+        self.repo_list = []
 
-        return dict_
+        for repo in repos[: self.limit]:
+
+            if not os.path.exists(self.tmp):
+                os.makedirs(self.tmp)
+
+            logging.info(repo)
+
+            try:
+                dict_ = self.crawl_repo(repo)
+
+                logging.info(dict_)
+
+                df.append(dict_)
+
+                shutil.rmtree(self.tmp)
+
+                self.repo_list.append(repo)
+
+            except Exception as e:
+                logging.error(e)
+
+        df = pd.DataFrame(df)
+
+        logging.info(df)
+
+        ans = df.sum(axis=0).sort_values(ascending=False)
+
+        logging.info(ans)
+
+        with open(self.dest, "w") as f:
+            f.write(str(ans))
+
+        # ans = df.sum(axis=1).sort_values(ascending=False)
+
+        # logging.info(ans)

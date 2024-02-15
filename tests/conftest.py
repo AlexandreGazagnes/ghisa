@@ -2,12 +2,15 @@
 Fixtures for the tests
 """
 
-# import os
+import os
 
-# import pytest
+import pytest
 
-# from ghisa.logger import logger
-# from ghisa.core.ghisa import ghisa
+
+import shutil
+
+from ghisa.logger import logger
+from ghisa.core.ghisa import Ghisa
 
 
 # VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
@@ -22,18 +25,17 @@ Fixtures for the tests
 #     return []
 
 
-# def pytest_sessionstart(session):
-#     """
-#     Called after the Session object has been created and
-#     before performing collection and entering the run test loop.
-#     """
+def pytest_sessionstart(session):
+    """
+    Called after the Session object has been created and
+    before performing collection and entering the run test loop.
+    """
 
-#     if os.path.exists(ghisa.DEFAULT_TMP):
-#         for file in os.listdir(ghisa.DEFAULT_TMP):
-#             os.remove(ghisa.DEFAULT_TMP + file)
-#         os.rmdir(ghisa.DEFAULT_TMP)
+    if os.path.exists(Ghisa.DEFAULT_TMP):
+        # os.rmdir(Ghisa.DEFAULT_TMP)
+        shutil.rmtree(Ghisa.DEFAULT_TMP)
 
-#     if not os.path.exists(ghisa.DEFAULT_TMP):
-#         os.makedirs(ghisa.DEFAULT_TMP)
+    if not os.path.exists(Ghisa.DEFAULT_TMP):
+        os.makedirs(Ghisa.DEFAULT_TMP)
 
-#     pass
+    pass
