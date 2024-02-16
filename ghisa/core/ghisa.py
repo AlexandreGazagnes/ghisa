@@ -69,37 +69,6 @@ class Ghisa:
 
         return imports
 
-    def _clone_repo(self, repo_url):
-        """Clone the repository"""
-
-        if not repo_url:
-            repo_url = self.DEFAULT_REPO
-
-        if not os.path.exists(self.tmp):
-            os.makedirs(self.tmp)
-
-        if not repo_url.startswith("https://github.com"):
-            raise ValueError(f"Expected {repo_url} to be a github url")
-
-        if not repo_url.endswith(".git"):
-            repo_url = repo_url + ".git"
-
-        os.system(f"git clone {repo_url} {self.tmp}")
-        os.system(f"rm -rf {self.tmp}/.git")
-
-        self.repo_name = f"./{self.tmp}/"
-
-    def _make_file_list(self):
-        """Glob files to find .py or .iypnb Make the file list"""
-
-        query1 = self.repo_name + "**/*.ipynb"
-        l1 = glob.glob(query1, recursive=True)
-
-        query2 = self.repo_name + "**/*.py"
-        l2 = glob.glob(query2, recursive=True)
-
-        self.file_list = l1 + l2
-
     def _count_imports(self):
         """Count the imports"""
 
