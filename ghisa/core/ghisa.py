@@ -13,61 +13,83 @@ import pandas as pd
 import requests
 import logging
 from bs4 import BeautifulSoup
-
-from .helpers import get_import, extract_from_import_line, counter
-from ghisa.core.scrap import make_soup, extract_repositories
+from .defaults import (
+    DEFAULT_ASYNCHRONOUS,
+    DEFAULT_DEST,
+    DEFAULT_FILE,
+    DEFAULT_PROFILE_URL,
+    DEFAULT_PROJECT_URL,
+    DEFAULT_TEST_MODE,
+    DEFAULT_CONFIG,
+    DEFAULT_REPO_LIMIT,
+    DEFAULT_TOP_LIBRAIRIES,
+    DEFAULT_SORT,
+    DEFAULT_TMP,
+)
 
 
 class Ghisa:
     """Ghisa is the main class of the library. It is used to create a new"""
 
-    DEFAULT_REPO = repo_url = "https://github.com/MentalDeFer972/project2py-ocr"
-    DEFAULT_TMP = "tmp"
-
-    DEFAULT_DEST = "./result.txt"
+    DEFAULT_ASYNCHRONOUS = DEFAULT_ASYNCHRONOUS
+    DEFAULT_DEST = DEFAULT_DEST
+    # DEFAULT_TMP = DEFAULT_TMP
+    DEFAULT_FILE = DEFAULT_FILE
+    DEFAULT_PROFILE_URL = DEFAULT_PROFILE_URL
+    DEFAULT_PROJECT_URL = DEFAULT_PROJECT_URL
+    DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
+    DEFAULT_CONFIG = DEFAULT_CONFIG
+    DEFAULT_REPO_LIMIT = DEFAULT_REPO_LIMIT
+    DEFAULT_TOP_LIBRAIRIES = DEFAULT_TOP_LIBRAIRIES
+    DEFAULT_SORT = DEFAULT_SORT
 
     def __init__(
         self,
-        config={},
-        tmp=None,
-        test_mode=False,
-        limit=20,
         dest=None,
-        top=20,
-        sort="stargazers",
+        file=None,
+        repo_limit=20,
+        top_librairies=20,
+        sort=None,
+        test_mode=True,
+        config=None,
     ):
         """Constructor of the class. It takes the url of the website to be"""
 
         # self.url = url
-        self.config = config
+        self.config = config if config else self.DEFAULT_CONFIG
         self.dest = dest if dest else self.DEFAULT_DEST
+        self.file = file if file else self.DEFAULT_FILE
+        self.repo_limit = repo_limit if repo_limit else self.DEFAULT_REPO_LIMIT
+        self.top_librairies = (
+            top_librairies if top_librairies else self.DEFAULT_TOP_LIBRAIRIES
+        )
+        self.sort = sort if sort else self.DEFAULT_SORT
+        self.test_mode = test_mode if test_mode else self.DEFAULT_TEST_MODE
 
-        self.top = top
-        self.limit = limit
-        self.test_mode = test_mode
-        self.sort = sort
         self.url = ""
         self.repo_url = ""
         self.repo_name = ""
 
         self.file_list = []
 
-        self.pattern = "**/*.py"
+        # self.pattern = "**/*.py"
 
-        self.tmp: str = self.DEFAULT_TMP if not tmp else tmp
+        # self.tmp: str = self.DEFAULT_TMP if not tmp else tmp
 
-    def crawl_repo(self, url: None):
+    def crawl_repo(self, name_or_url):
         """Method to crawl the repository"""
 
-        self.repo_url = url
+        repo_url = manage_name_or_url(name_or_url)
 
-        self._clone_repo(url)
+        # self.repo_url = url
 
-        self._make_file_list()
+        # self._clone_repo(url)
 
-        imports = self._count_imports()
+        # self._make_file_list()
 
-        return imports
+        # imports = self._count_imports()
+
+        # return imports
 
     def _count_imports(self):
         """Count the imports"""

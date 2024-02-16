@@ -3,7 +3,7 @@ Load module
 """
 
 
-def save(ans, dest=None):
+def save(ans, dest):
 
     with open(dest, "w") as f:
         f.write(str(ans))

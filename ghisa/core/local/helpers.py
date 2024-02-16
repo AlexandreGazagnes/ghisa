@@ -1,3 +1,7 @@
+"""
+Helper functions
+"""
+
 import collections
 
 from ghisa.logger import logger

@@ -47,7 +47,13 @@ def transform_import_line(txt):
     )
 
 
+"""
+Transform module
+"""
+
+
 def make_final_df(dict_list, top_librairies=20):
+    """Make the final dataframe from the list of dictionaries of modules used in the files of the repository"""
 
     df = pd.DataFrame(dict_list)
 

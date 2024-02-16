@@ -9,7 +9,7 @@ from .helpers import denest_module_list, clean_module_list, counter
 
 
 def make_modules_list_from_file(filename, repo_name) -> list:
-    """Parse a file"""
+    """Parse a file and return a list of modules used in the file"""
 
     lines = get_imports_line_from_file(filename)
 
@@ -25,7 +25,7 @@ def make_modules_list_from_file(filename, repo_name) -> list:
 
 
 def make_module_dict_from_file(filename, repo_name) -> dict:
-    """Parse a file"""
+    """Parse a file and return a counter dictionary of modules used in the file and their counts"""
 
     module_list = make_modules_list_from_file(filename, repo_name=repo_name)
 
