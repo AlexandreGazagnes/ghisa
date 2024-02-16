@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ghisa"
 version = "0.0.1"
-description = "ghisa is a GitHub Import Stats Analyzer"
+description = "ghisa is a GitHub Import Stats Analyzer for pythonistas"
 license = "BSD-3-Clause"
 authors = ["AlexandreGazagnes <alex@gazagnes.net>",]
 maintainers = ["AlexandreGazagnes <alex@gazagnes.net>",]
@@ -11,7 +11,7 @@ homepage = "https://alexandregazagnes.github.io/ghisa/"
 repository = "https://github.com/AlexandreGazagnes/ghisa/"
 documentation = "https://alexandregazagnes.github.io/ghisa/"
 
-keywords=["python", "music", "tool", "utils", "youtube"]
+keywords=["python", "git", "tool", "utils", "github", "stats", "analyzer", "import", "export", "data", "analysis"]
 classifiers = [
     "License :: OSI Approved :: BSD 3-Clause License",
     "Intended Audience :: Developers",
@@ -28,7 +28,7 @@ classifiers = [
 
 
 packages = [{include = "ghisa"}]
-include = ["docs/docs/CHANGELOG.md", "LICENCE"]
+include = ["CHANGELOG.md", "LICENCE"]
 
 [tool.poetry.urls]
 "Homepage" = "https://alexandregazagnes.github.io/ghisa/"
@@ -46,19 +46,20 @@ include = ["docs/docs/CHANGELOG.md", "LICENCE"]
 [tool.poetry.dependencies]
 # python = ">=3.9,<3.9.7 || >3.9.7,<4"
 python = "3.10.12"
-# cleo = "^2.1.0"
-# requests = "^2.31.0"
-# pytube = "^15.0.0"
-# beautifulsoup4 = "^4.12.2"
-# ffmpeg-python = "^0.2.0"
+cleo = "^2.1.0"
+
+
+[tool.poetry.group.core.dependencies]
+cleo = "^2.1.0"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.2"
 # python-dotenv = "^1.0.1"
+pandas = "^2.2.0"
+github = "^1.2.7"
 
 
-# [tool.poetry.group.core.dependencies]
-
-
-# [tool.poetry.group.front.dependencies]
-# streamlit = "^1.29.0"
+[tool.poetry.group.front.dependencies]
+streamlit = "^1.29.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -90,7 +91,6 @@ pycln = "^2.4.0"
 bandit = "^1.7.7"
 isort = "^5.13.2"
 safety = "^3.0.1"
-
 # pycodestyle = "^2.11.1"
 # pydocstyle = "^6.3.0"
 # vulture = "^2.11"
@@ -104,10 +104,10 @@ coverage = "^7.4.1"
 pytest-cov = "^4.1.0"
 coverage-badge = "^1.1.0"
 
+
 [tool.poetry.group.doc.dependencies]
 mkdocs = ">=1.5.3"
 mkdocs-material = "^9.5.9"
-
 
 
 [tool.black]
