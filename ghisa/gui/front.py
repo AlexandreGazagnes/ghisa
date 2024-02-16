@@ -5,9 +5,7 @@ Streamlit front-end for the Ghisa app.
 import streamlit as st
 
 from ghisa.core.ghisa import Ghisa
-
-from ghisa.helpers import asciize
-
+from ghisa.core.helpers import asciize
 
 # header image
 img = "./docs/assets/img/image.png"
