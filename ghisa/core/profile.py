@@ -34,8 +34,6 @@ from .repo import Repo
 # from .local.helpers import counter
 
 
-
-
 class Profile:
     """Profile class"""
 
@@ -106,7 +104,6 @@ class Profile:
         self.module_dict = []
 
         if not self.asynchronous:
-
             self._get_repo_list()
             self._make_repo_objects()
             self._count_imports()
@@ -136,7 +133,6 @@ class Profile:
         """ """
 
         for repo_url in self.repo_list_url:
-
             # TODO: not good to catch all exceptions
             try:
                 repo = Repo(repo_url)

@@ -162,7 +162,6 @@ class Repo:
 
     @property
     def file_list(self):
-
         li = [i.removeprefix(self.tmp) for i in self._file_list]
         li = [i.removeprefix("/") for i in li]
 

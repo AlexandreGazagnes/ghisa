@@ -10,7 +10,6 @@ from .helpers import over_clean_import_statement
 
 
 def __transform_from_mode(txt):
-
     if txt.startswith("from ."):
         return []
 
@@ -22,7 +21,6 @@ def __transform_from_mode(txt):
 
 
 def __transform_import_mode(txt):
-
     if txt.startswith("import ."):
         return []
 

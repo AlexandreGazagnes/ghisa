@@ -1,0 +1,1 @@
+{'pytest': 2, 'dotenv': 2, 'requests': 2, 'bs4': 2, 'ffmpeg': 2, 'pytube': 2, 'cleo': 5, 'streamlit': 2}

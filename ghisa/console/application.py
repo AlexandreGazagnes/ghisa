@@ -5,8 +5,8 @@ Console Application
 from cleo.application import Application
 
 from .gui import GuiCommand
-from .repo import RepoCommand
 from .profile import ProfileCommand
+from .repo import RepoCommand
 
 # from cleo.commands.command import Command
 # from cleo.helpers import argument, option
@@ -41,7 +41,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-
     # application = Application()
     # application.add(GuiCommand())
     # application.add(ProfileCommand())

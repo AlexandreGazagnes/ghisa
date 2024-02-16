@@ -5,32 +5,31 @@ RepoCommand
 from cleo.commands.command import Command
 from cleo.helpers import argument, option
 
-# from ghisa.core.ghisa import Ghisa
-
-from ghisa.core.repo import Repo
-
 from ghisa.core.defaults import (
-    DEFAULT_DEST,
-    DEFAULT_FILE,
-    DEFAULT_OUTPUT,
     DEFAULT_ASYNCHRONOUS,
+    DEFAULT_CONFIG,
+    DEFAULT_DEST,
+    DEFAULT_EXCLUDE_FORKS,
+    DEFAULT_FILE,
+    DEFAULT_FORCE_UNIQUE,
+    DEFAULT_OUTPUT,
+    DEFAULT_PROFILE_NAME,
+    DEFAULT_REPO_NUMBER_LIMIT,
+    DEFAULT_REPO_PAGES_LIMIT,
+    DEFAULT_SORT,
     DEFAULT_TEST_MODE,
     DEFAULT_TMP,
     DEFAULT_TOP_LIBRAIRIES,
-    DEFAULT_CONFIG,
-    DEFAULT_FORCE_UNIQUE,
-    DEFAULT_SORT,
-    DEFAULT_REPO_PAGES_LIMIT,
-    DEFAULT_REPO_NUMBER_LIMIT,
-    DEFAULT_PROFILE_NAME,
-    DEFAULT_EXCLUDE_FORKS,
-    DEFAULT_ASYNCHRONOUS,
 )
+from ghisa.core.repo import Repo
 from ghisa.logger import logger
+
+# from ghisa.core.ghisa import Ghisa
+
+
 
 
 class RepoCommand(Command):
-
     name = "run repo"
 
     description = "Run github repo session"
