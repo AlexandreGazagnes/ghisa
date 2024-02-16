@@ -3,20 +3,12 @@ Fixtures for the tests
 """
 
 import os
+import shutil
 
 import pytest
 
-
-import shutil
-
-from ghisa.logger import logger
 from ghisa.core.ghisa import Ghisa
-
-
-# VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
-# VIDEO_ID = "V62oKsHdsLU"
-# VIDEO_QUERY = "jo l'rigolo"
-
+from ghisa.logger import logger
 
 # @pytest.fixture
 # def list_queries() -> list:

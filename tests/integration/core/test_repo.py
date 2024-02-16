@@ -4,7 +4,6 @@ Test the Repo class.
 
 import pytest
 
-
 from ghisa.core import Repo
 
 

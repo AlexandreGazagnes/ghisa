@@ -2,42 +2,39 @@
 Profile module class
 """
 
-from ghisa.logger import logger
-
-from .repo import Repo
-
-from .local.transform import make_final_df
-from .local.load import save
 import pandas as pd
 
+from ghisa.logger import logger
+
+# .extract import get_repositories_from_profile, get_repositories_from_a_page
+from .defaults import (
+    BASE_URL,
+    DEFAULT_ASYNCHRONOUS,
+    DEFAULT_CONFIG,
+    DEFAULT_DEST,
+    DEFAULT_EXCLUDE_FORKS,
+    DEFAULT_FILE,
+    DEFAULT_FORCE_UNIQUE,
+    DEFAULT_PROFILE_NAME,
+    DEFAULT_REPO_NUMBER_LIMIT,
+    DEFAULT_REPO_PAGES_LIMIT,
+    DEFAULT_REPO_URL,
+    DEFAULT_SORT,
+    DEFAULT_TEST_MODE,
+    DEFAULT_TMP,
+    DEFAULT_TOP_LIBRAIRIES,
+)
+from .gh.gh import get_repositories_from_a_page, get_repositories_from_profile
+from .local.load import save
+from .local.transform import make_final_df
+from .repo import Repo
 
 # from gh.load import clone_repo
 # from .local.extract import make_python_file_list
 # from .local.local import make_modules_list_from_file
 # from .local.helpers import counter
 
-from .gh.gh import get_repositories_from_profile, get_repositories_from_a_page
 
-# .extract import get_repositories_from_profile, get_repositories_from_a_page
-from .defaults import (
-    DEFAULT_ASYNCHRONOUS,
-    DEFAULT_DEST,
-    DEFAULT_FILE,
-    DEFAULT_PROFILE_NAME,
-    DEFAULT_REPO_URL,
-    DEFAULT_TEST_MODE,
-    DEFAULT_CONFIG,
-    DEFAULT_REPO_PAGES_LIMIT,
-    DEFAULT_TOP_LIBRAIRIES,
-    DEFAULT_SORT,
-    DEFAULT_TMP,
-    BASE_URL,
-    DEFAULT_TEST_MODE,
-    DEFAULT_FORCE_UNIQUE,
-    DEFAULT_REPO_PAGES_LIMIT,
-    DEFAULT_REPO_NUMBER_LIMIT,
-    DEFAULT_EXCLUDE_FORKS,
-)
 
 
 class Profile:

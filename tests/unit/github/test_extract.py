@@ -1,7 +1,7 @@
-from ghisa.logger import logger
-from ghisa.core.github.extract import make_soup, extract_repositories
-
 import pytest
+
+from ghisa.core.github.extract import extract_repositories, make_soup
+from ghisa.logger import logger
 
 
 class TestGhitHubExtract:

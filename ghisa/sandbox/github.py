@@ -1,5 +1,6 @@
-import github
 import asyncio
+
+import github
 
 
 async def get_user():

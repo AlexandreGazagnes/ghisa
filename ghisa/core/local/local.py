@@ -2,11 +2,10 @@
 Local module    
 """
 
-from .extract import get_imports_line_from_file
-
-from .transform import transform_import_line
-from .helpers import clean_module_list, counter
 from ..helpers import denest
+from .extract import get_imports_line_from_file
+from .helpers import clean_module_list, counter
+from .transform import transform_import_line
 
 
 def make_modules_list_from_file(filename, repo_name, tmp="./tmp") -> list:

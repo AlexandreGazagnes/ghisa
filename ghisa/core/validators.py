@@ -3,11 +3,11 @@ Module for validators and decorators
 """
 
 import os
-from ghisa.logger import logger
 
 # import logger
 from abc import ABC, abstractmethod
 
+from ghisa.logger import logger
 
 from ..validators import Validator
 

@@ -2,7 +2,9 @@
 Test the extract module
 """
 
-import os, sys
+import os
+import sys
+
 import pytest
 
 from ghisa.core.helpers import *

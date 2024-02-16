@@ -4,22 +4,21 @@ Repo class Module
 
 from ghisa.logger import logger
 
-from .gh.load import clone_repo
-from .local.extract import make_python_file_list
-from .local.local import make_modules_list_from_file
-from .local.helpers import counter
 from .defaults import (
+    BASE_URL,
+    DEFAULT_CONFIG,
     DEFAULT_DEST,
     DEFAULT_FILE,
+    DEFAULT_FORCE_UNIQUE,
     DEFAULT_REPO_URL,
     DEFAULT_TEST_MODE,
-    DEFAULT_CONFIG,
-    DEFAULT_TOP_LIBRAIRIES,
     DEFAULT_TMP,
-    BASE_URL,
-    DEFAULT_TEST_MODE,
-    DEFAULT_FORCE_UNIQUE,
+    DEFAULT_TOP_LIBRAIRIES,
 )
+from .gh.load import clone_repo
+from .local.extract import make_python_file_list
+from .local.helpers import counter
+from .local.local import make_modules_list_from_file
 
 
 class Repo:

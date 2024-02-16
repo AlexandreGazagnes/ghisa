@@ -2,8 +2,8 @@
 Exctract module
 """
 
-import os
 import glob
+import os
 
 from ghisa.logger import logger
 

@@ -4,8 +4,8 @@ Test the Repo class.
 
 import pytest
 
-from ghisa.logger import logger
 from ghisa.core import Profile
+from ghisa.logger import logger
 
 
 class TestProfileIntegration:

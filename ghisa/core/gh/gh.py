@@ -3,8 +3,9 @@ github module
 """
 
 from ghisa.logger import logger
-from .urls import make_repo_list_url, make_profile_url, make_git_repo_url
-from .extract import make_soup, extract_repositories
+
+from .extract import extract_repositories, make_soup
+from .urls import make_git_repo_url, make_profile_url, make_repo_list_url
 
 
 def get_repositories_from_a_page(profile_name, page=0, sort=None):

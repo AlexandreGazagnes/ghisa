@@ -2,28 +2,28 @@
 Ghisa is a library to crawl and analyze the data from github.
 """
 
-import os
 import glob
-
+import os
 import shutil
 
-from ghisa.logger import logger
 import pandas as pd
-
 import requests
 from bs4 import BeautifulSoup
+
+from ghisa.logger import logger
+
 from .defaults import (
     DEFAULT_ASYNCHRONOUS,
+    DEFAULT_CONFIG,
     DEFAULT_DEST,
     DEFAULT_FILE,
     DEFAULT_PROFILE_NAME,
-    DEFAULT_REPO_URL,
-    DEFAULT_TEST_MODE,
-    DEFAULT_CONFIG,
     DEFAULT_REPO_PAGES_LIMIT,
-    DEFAULT_TOP_LIBRAIRIES,
+    DEFAULT_REPO_URL,
     DEFAULT_SORT,
+    DEFAULT_TEST_MODE,
     DEFAULT_TMP,
+    DEFAULT_TOP_LIBRAIRIES,
 )
 
 

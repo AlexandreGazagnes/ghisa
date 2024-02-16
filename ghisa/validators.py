@@ -8,7 +8,6 @@ Module for validators and decorators
 
 from abc import ABC, abstractmethod
 
-
 # from ghisa.core.defaults import DEFAULT_CONFIG
 
 

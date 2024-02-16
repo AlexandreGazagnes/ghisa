@@ -4,10 +4,11 @@ Configurations for the app
 
 import os
 
+from .logger import logger
+
 # import dotenv
 # from dotenv import dotenv_values
 
-from .logger import logger
 
 
 def get_config():

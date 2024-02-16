@@ -3,12 +3,11 @@ Extract module
 """
 
 import requests
-
 from bs4 import BeautifulSoup
 
 from ghisa.logger import logger
-from .urls import make_repo_list_url, make_profile_url, make_git_repo_url
 
+from .urls import make_git_repo_url, make_profile_url, make_repo_list_url
 
 # def get_is_forked(profile, repo_name):
 

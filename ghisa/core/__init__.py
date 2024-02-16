@@ -3,7 +3,7 @@ Core module for the Ghisa project.
 """
 
 from .ghisa import Ghisa
-from .repo import Repo
 from .profile import Profile
+from .repo import Repo
 
 # __all__ = ["Awdible"]
