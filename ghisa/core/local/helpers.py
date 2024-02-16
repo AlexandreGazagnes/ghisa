@@ -6,11 +6,16 @@ import collections
 
 from ghisa.logger import logger
 
+from .pypi_list import pypi_list
+
+from .builtins_modules import buildin_list
+from .extract import get_folder_list
+
 
 def over_clean_import_statement(txt):
     """Clean the import statement"""
 
-    logger.info("txt before clean = " + txt)
+    # logger.info("txt before clean = " + txt)
 
     txt = txt.strip()
     if txt.startswith("import "):
@@ -28,11 +33,13 @@ def over_clean_import_statement(txt):
     txt = txt.strip()
     txt = txt.removesuffix("\n")
     txt = txt.removesuffix("\\n")
-
+    txt = txt.removesuffix('\\n"')
     txt = txt.removesuffix(";")
     txt = txt.strip()
 
-    logger.info("txt after clean = " + txt)
+    # TODO: enmable package selection : only if in pypi_list
+
+    # logger.info("txt after clean = " + txt)
 
     return txt
 
@@ -46,19 +53,34 @@ def counter(module_list):
     return c
 
 
-def clean_module_list(module_list, repo_name=None):
+def clean_module_list(module_list, repo_name=None, tmp="./tmp"):
+    """Clean the module list from unwanted modules"""
 
     module_list = [i for i in module_list if i]
+    # module_list = [i for i in module_list if i not in dir(__builtins__)]
 
-    module_list = [i for i in module_list if i not in dir(__builtins__)]
+    module_list = [over_clean_import_statement(i) for i in module_list]
+    module_list = [i for i in module_list if i not in buildin_list]
 
-    extras = ["os", "logger", "secrets"]
+    extras = [
+        "src",
+        "time",
+        "datetime",
+        "os",
+        "sys",
+        "re",
+        "json",
+        "pathlib",
+        "path",
+        "random",
+        "string",
+        "math",
+    ]
     module_list = [i for i in module_list if i not in extras]
-
     module_list = [i for i in module_list if i != repo_name]
 
-    module_list = [i for i in module_list if i]
-
+    module_list = [i for i in module_list if i not in get_folder_list(tmp)]
+    # module_list = [i for i in module_list if i]
     module_list = [i.strip() for i in module_list]
 
     return module_list

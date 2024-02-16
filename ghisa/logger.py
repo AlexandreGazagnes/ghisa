@@ -2,6 +2,7 @@
 Logger module to log the messages
 """
 
+import os
 import logging
 
 
@@ -10,6 +11,9 @@ LOG_LEVEL = logging.INFO
 
 def get_logger(name):
     """Get the logger."""
+
+    if not os.path.exists("logs"):
+        os.makedirs("logs")
 
     logger = logging.getLogger(name)
     logger.setLevel(LOG_LEVEL)

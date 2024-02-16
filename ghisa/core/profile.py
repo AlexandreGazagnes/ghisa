@@ -1,4 +1,5 @@
 """
+Profile module class
 """
 
 from ghisa.logger import logger
@@ -10,12 +11,14 @@ from .local.load import save
 import pandas as pd
 
 
-# from .github.load import clone_repo
+# from gh.load import clone_repo
 # from .local.extract import make_python_file_list
 # from .local.local import make_modules_list_from_file
 # from .local.helpers import counter
 
-from .github.github import get_repositories_from_profile, get_repositories_from_a_page
+from .gh.gh import get_repositories_from_profile, get_repositories_from_a_page
+
+# .extract import get_repositories_from_profile, get_repositories_from_a_page
 from .defaults import (
     DEFAULT_ASYNCHRONOUS,
     DEFAULT_DEST,
@@ -30,9 +33,10 @@ from .defaults import (
     DEFAULT_TMP,
     BASE_URL,
     DEFAULT_TEST_MODE,
-    FORCE_UNIQUE,
+    DEFAULT_FORCE_UNIQUE,
     DEFAULT_REPO_PAGES_LIMIT,
     DEFAULT_REPO_NUMBER_LIMIT,
+    DEFAULT_EXCLUDE_FORKS,
 )
 
 
@@ -47,13 +51,14 @@ class Profile:
     DEFAULT_TMP = DEFAULT_TMP
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
     DEFAULT_PROFILE_NAME = DEFAULT_PROFILE_NAME
-    FORCE_UNIQUE = FORCE_UNIQUE
+    DEFAULT_FORCE_UNIQUE = DEFAULT_FORCE_UNIQUE
 
     DEFAULT_SORT = DEFAULT_SORT
     DEFAULT_REPO_PAGES_LIMIT = DEFAULT_REPO_PAGES_LIMIT
     DEFAULT_REPO_NUMBER_LIMIT = DEFAULT_REPO_NUMBER_LIMIT
     DEFAULT_PROFILE_NAME = DEFAULT_PROFILE_NAME
     DEFAULT_ASYNCHRONOUS = DEFAULT_ASYNCHRONOUS
+    DEFAULT_EXCLUDE_FORKS = DEFAULT_EXCLUDE_FORKS
 
     BASE_URL = BASE_URL
 
@@ -68,6 +73,7 @@ class Profile:
         force_unique=False,
         test_mode=None,
         sort=None,
+        exclude_forks=True,
         repo_pages_limit=None,
         repo_number_limit=None,
         asynchronous=None,
@@ -82,7 +88,7 @@ class Profile:
         )
         self.config = config if config else self.DEFAULT_CONFIG
         self.tmp = tmp if tmp else self.DEFAULT_TMP
-        self.force_unique = force_unique if force_unique else self.FORCE_UNIQUE
+        self.force_unique = force_unique if force_unique else self.DEFAULT_FORCE_UNIQUE
         self.test_mode = test_mode if test_mode else self.DEFAULT_TEST_MODE
         self.sort = sort if sort else self.DEFAULT_SORT
         self.repo_pages_limit = (
@@ -92,6 +98,9 @@ class Profile:
             repo_number_limit if repo_number_limit else self.DEFAULT_REPO_NUMBER_LIMIT
         )
 
+        self.exclude_forks = (
+            exclude_forks if exclude_forks else self.DEFAULT_EXCLUDE_FORKS
+        )
         self.asynchronous = asynchronous if asynchronous else self.DEFAULT_ASYNCHRONOUS
 
         self.repo_list_url = []
@@ -100,12 +109,23 @@ class Profile:
         self.module_unique_list = []
         self.module_dict = []
 
-        self._get_repo_list()
-        self._make_repo_objects()
-        self._count_imports()
+        if not self.asynchronous:
+
+            self._get_repo_list()
+            self._make_repo_objects()
+            self._count_imports()
+
+        else:
+            raise NotImplementedError("Asynchronous mode not implemented yet")
 
     def _get_repo_list(self):
         """ """
+
+        # TODO : avoid to get all the repos if repo_number_limit is set
+        # manage repo_pages_limit vs repo_number_limit
+        # 30 repo per page
+        # if repo_number_limit == 20 ==> repo_pages_limit = 1
+        # add this feature
 
         self.repo_list_url = get_repositories_from_profile(
             self.profile_name,
@@ -121,6 +141,7 @@ class Profile:
 
         for repo_url in self.repo_list_url:
 
+            # TODO: not good to catch all exceptions
             try:
                 repo = Repo(repo_url)
                 self.repo_list_object.append(repo)
@@ -129,18 +150,11 @@ class Profile:
                 continue
 
     def _count_imports(self):
-        """"""
+        """ """
 
-        li = []
-        for repo in self.repo_list_object:
-            logger.warning(f"repo.module_dict is :{repo.module_dict}")
-            li.append(repo.module_dict)
+        li = [repo.module_dict for repo in self.repo_list_object]
 
         ans = make_final_df(li, top_librairies=self.top_librairies)
 
         logger.warning(f"ans is :{ans}")
-
         save(ans, "test.json")
-        # df.to_csv("test.csv", index=False)
-
-        # ans = df.sum

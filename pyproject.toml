@@ -64,6 +64,7 @@ requests = "^2.31.0"
 pandas = "^2.2.0"
 ipython = "^8.21.0"
 streamlit = "^1.31.1"
+github = "^1.2.7"
 
 
 [tool.poetry.group.dev.dependencies]

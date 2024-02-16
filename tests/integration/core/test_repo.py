@@ -14,7 +14,8 @@ class TestRepoIntegration:
     def test_repo(self):
         """Test the Repo class."""
 
-        repo = Repo()
+        url = "https://github.com/AlexandreGazagnes/awdible"
+        repo = Repo(repo_url=url, test_mode=True)
         repo.module_dict
 
         with open("repo.txt", "w") as f:

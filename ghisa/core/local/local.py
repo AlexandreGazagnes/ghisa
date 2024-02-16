@@ -9,7 +9,7 @@ from .helpers import clean_module_list, counter
 from ..helpers import denest
 
 
-def make_modules_list_from_file(filename, repo_name) -> list:
+def make_modules_list_from_file(filename, repo_name, tmp="./tmp") -> list:
     """Parse a file and return a list of modules used in the file"""
 
     lines = get_imports_line_from_file(filename)
@@ -18,17 +18,17 @@ def make_modules_list_from_file(filename, repo_name) -> list:
 
     modules = denest(nested_modules)
 
-    modules = clean_module_list(modules, repo_name=repo_name)
+    modules = clean_module_list(modules, repo_name=repo_name, tmp=tmp)
 
     # logger.info(f"") = modules
 
     return modules
 
 
-def make_module_dict_from_file(filename, repo_name) -> dict:
+def make_module_dict_from_file(filename, repo_name, tmp="./tmp") -> dict:
     """Parse a file and return a counter dictionary of modules used in the file and their counts"""
 
-    module_list = make_modules_list_from_file(filename, repo_name=repo_name)
+    module_list = make_modules_list_from_file(filename, repo_name=repo_name, tmp=tmp)
 
     module_dict = counter(module_list)
 

@@ -1,9 +1,10 @@
 """
+Repo class Module
 """
 
 from ghisa.logger import logger
 
-from .github.load import clone_repo
+from .gh.load import clone_repo
 from .local.extract import make_python_file_list
 from .local.local import make_modules_list_from_file
 from .local.helpers import counter
@@ -17,7 +18,7 @@ from .defaults import (
     DEFAULT_TMP,
     BASE_URL,
     DEFAULT_TEST_MODE,
-    FORCE_UNIQUE,
+    DEFAULT_FORCE_UNIQUE,
 )
 
 
@@ -31,7 +32,7 @@ class Repo:
     DEFAULT_CONFIG = DEFAULT_CONFIG
     DEFAULT_TMP = DEFAULT_TMP
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
-    FORCE_UNIQUE = FORCE_UNIQUE
+    DEFAULT_FORCE_UNIQUE = DEFAULT_FORCE_UNIQUE
 
     BASE_URL = BASE_URL
 
@@ -57,7 +58,7 @@ class Repo:
         self.config = config if config else self.DEFAULT_CONFIG
         self.test_mode = test_mode if test_mode else self.DEFAULT_TEST_MODE
         self.tmp = tmp if tmp else self.DEFAULT_TMP
-        self.force_unique = force_unique if force_unique else self.FORCE_UNIQUE
+        self.force_unique = force_unique if force_unique else self.DEFAULT_FORCE_UNIQUE
         self.repo_git = ""
         self.repo_name = ""
         self.profile = ""
@@ -67,6 +68,11 @@ class Repo:
         self.module_unique_list = []
         self.module_dict = {}
 
+        self._run()
+
+    def _run(self):
+        """ """
+
         self._manage_repo()
         self._clone_repo()
         self._count_imports()
@@ -74,9 +80,9 @@ class Repo:
     def _manage_repo(self):
         """ """
 
-        ######
-        # THIS CODE SHOULD MOOVE
-        ########
+        ######################################
+        #   THIS CODE SHOULD MOOVE
+        #######################################
 
         # TODO USE A VALIDATOR
         if not self.repo_url.startswith(self.BASE_URL):
@@ -105,15 +111,18 @@ class Repo:
         self.repo_url = f"{self.BASE_URL}/{self.profile}/{self.repo_name}"
         self.repo_git = f"{self.repo_url}.git"
 
-        logger.info(f"Profile : {self.profile}")
-        logger.info(f"Repo name : {self.repo_name}")
-        logger.info(f"Repo url : {self.repo_url}")
-        logger.info(f"Repo git : {self.repo_git}")
+        # logger.info(f"Profile : {self.profile}")
+        # logger.info(f"Repo name : {self.repo_name}")
+        # logger.info(f"Repo url : {self.repo_url}")
+        # logger.info(f"Repo git : {self.repo_git}")
+
+        ######################################
+        #   THIS CODE SHOULD MOOVE
+        #######################################
 
     def _clone_repo(self):
         """ """
 
-        # just clone the repo
         clone_repo(self.repo_git, self.tmp)
 
     def _count_imports(self):
@@ -121,8 +130,8 @@ class Repo:
 
         self._file_list = make_python_file_list(self.tmp)
 
-        if not self._file_list:
-            raise ValueError(f"No python files found in {self.dest}")
+        # if not self._file_list:
+        #     raise ValueError(f"No python files found in {self.dest}")
 
         modules = []
         for file in self._file_list:
@@ -154,13 +163,20 @@ class Repo:
 
     @property
     def file_list(self):
+
         li = [i.removeprefix(self.tmp) for i in self._file_list]
         li = [i.removeprefix("/") for i in li]
+
         return li
 
     def __repr__(self):
         return f"{self.__dict__}"
 
+    # def _is_forked(self):
 
-if __name__ == "__main__":
-    repo = Repo()
+    #     out = is_forked(self.repo_url)
+    #     self.is_forked(out)
+
+
+# if __name__ == "__main__":
+#     repo = Repo()

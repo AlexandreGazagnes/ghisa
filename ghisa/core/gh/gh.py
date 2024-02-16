@@ -21,9 +21,9 @@ def get_repositories_from_a_page(profile_name, page=0, sort=None):
             f"no repositories found on page {page}   of {profile_name} {profile_url} and {repo_list_url}: "
         )
 
-    logger.info(
-        f" Repositories from page {page}  of {profile_name} {profile_url} and {repo_list_url}: {repos}"
-    )
+    # logger.info(
+    #     f" Repositories from page {page}  of {profile_name} {profile_url} and {repo_list_url}: {repos}"
+    # )
 
     return repos
 

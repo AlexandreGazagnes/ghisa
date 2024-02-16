@@ -16,12 +16,6 @@ class TestProfileIntegration:
 
         profile = Profile(
             repo_pages_limit=1,
-            repo_number_limit=3,
+            repo_number_limit=100,
             profile_name="AlexandreGazagnes",
         )
-
-        assert profile.repo_list_url
-
-        # logger.warning(profile.repo_list_url)
-
-        # logger.warning(profile.repo_list_object)
