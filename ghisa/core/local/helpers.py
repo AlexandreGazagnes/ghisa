@@ -8,7 +8,6 @@ from ghisa.logger import logger
 
 from .builtins_modules import buildin_list
 from .extract import get_folder_list
-from .pypi_list import pypi_list
 
 
 def over_clean_import_statement(txt):

@@ -2,12 +2,7 @@
 Test the extract module
 """
 
-import os
-import sys
-
 import pytest
-
-from ghisa.core.helpers import *
 
 
 class TestExtractFromImportLine:

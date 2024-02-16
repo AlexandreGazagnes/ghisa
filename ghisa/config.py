@@ -2,7 +2,6 @@
 Configurations for the app
 """
 
-import os
 
 from .logger import logger
 

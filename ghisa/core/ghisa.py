@@ -2,9 +2,6 @@
 Ghisa is a library to crawl and analyze the data from github.
 """
 
-import glob
-import os
-import shutil
 
 import pandas as pd
 import requests
