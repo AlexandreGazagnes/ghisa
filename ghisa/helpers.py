@@ -5,6 +5,16 @@ Helper functions for the awdible package.
 import string
 
 
+def denest(nested_list):
+    """Denest a list of lists"""
+
+    clean_list = []
+    for elem in nested_list:
+        clean_list.extend(elem)
+
+    return clean_list
+
+
 def asciize(txt: str) -> str:
     """Convert a string to ascii"""
 

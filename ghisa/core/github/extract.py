@@ -1,3 +1,11 @@
+import requests
+
+from bs4 import BeautifulSoup
+
+from ghisa.logger import logger
+from .urls import make_repo_list_url, make_profile_url, make_git_repo_url
+
+
 def make_soup(repo_list_url):
     """Method to get the repository"""
 
@@ -21,28 +29,13 @@ def extract_repositories(soup, profile_url):
 
     # repos = [repo.href for repo in repos]
 
-    logger.warning(repos)
+    logger.info(repos)
 
     repos = [repo for repo in repos if repo != ""]
     repos = [repo.strip() for repo in repos]
-    repos = [build_repo_url(profile_url, repo) for repo in repos]
+    repo_url_list = [make_git_repo_url(profile_url, repo) for repo in repos]
 
     # <a href="/AlexandreGazagnes/ghisa" itemprop="name codeRepository">
     #     ghisa</a>
 
-    return repos
-
-
-def get_repositories(profile, page=0, sort=None):
-
-    if page <= 1:
-        profile_url = make_profile_url(profile)
-        repo_list_url = make_repo_list_url(profile_url, page=page, sort=sort)
-
-        soup = make_soup(repo_list_url)
-        repos = extract_repositories(soup, profile_url)
-
-        return repos
-
-    else:
-        raise NotImplementedError("Pagination not implemented yet")
+    return repo_url_list

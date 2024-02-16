@@ -31,16 +31,16 @@ def make_repo_list_url(profile_url, page=0, sort=None):
     return repo_list_url
 
 
-def make_git_repo_url(profile_url, repo):
+def make_git_repo_url(profile_url, repo_name, ext=".git"):
     """from a profile url and a repo name, build the repo url"""
 
     if not profile_url.endswith("/"):
         profile_url = profile_url + "/"
 
-    repo_url = profile_url + repo
+    repo_url = profile_url + repo_name
 
     repo_url = repo_url.removesuffix("/")
 
-    repo_url = repo_url + ".git"
+    repo_url = repo_url + ext
 
     return repo_url

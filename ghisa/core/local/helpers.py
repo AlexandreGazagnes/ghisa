@@ -1,4 +1,12 @@
+import collections
+
+from ghisa.logger import logger
+
+
 def over_clean_import_statement(txt):
+    """Clean the import statement"""
+
+    logger.info("txt before clean = " + txt)
 
     txt = txt.strip()
     txt = txt.split(" as")[0]
@@ -6,34 +14,46 @@ def over_clean_import_statement(txt):
     txt = txt.strip()
     txt = txt.split(".")[0]
 
+    # txt = txt.strip()
+    # txt = txt.split(" as")[0]
+
     txt = txt.strip()
-    txt = txt.split(" as")[0]
 
-    return txt.strip()
+    logger.info("txt after clean = " + txt)
 
-
-def counter(li):
-
-    c = collections.Counter(li)
-
-    return dict(c)
+    return txt
 
 
-def denest_modules(nested_modules):
+def counter(module_list):
+    """Count the number of occurences of each module in the list of modules"""
 
-    modules = []
-    for module in nested_modules:
-        modules.extend(module)
+    c = collections.Counter(module_list)
+    c = dict(c)
 
-    return modules
+    return c
 
 
-def clean_modues(modules):
+def clean_module_list(module_list, repo_name=None):
 
-    modules = [i for i in modules if i]
-    modules = [i for i in modules if i not in dir(__builtins__)]
+    module_list = [i for i in module_list if i]
+    module_list = [i for i in module_list if i not in dir(__builtins__)]
 
     extras = ["os"]
-    modules = [i for i in modules if i not in extras]
+    module_list = [i for i in module_list if i not in extras]
 
-    return modules
+    module_list = [i for i in module_list if i != repo_name]
+
+    module_list = [i for i in module_list if i]
+
+    module_list = [i.strip() for i in module_list]
+
+    return module_list
+
+
+def get_repo_name_from_repo_url(repo_url):
+    """Extract the repository name from the repository url"""
+
+    repo_url = repo_url.split(".git")[0]
+    repo_name = repo_url.split("/")[-1]
+
+    return repo_name

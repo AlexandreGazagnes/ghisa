@@ -1,3 +1,8 @@
+from ghisa.logger import logger
+
+import glob
+
+
 def make_python_file_list(self, repo_name):
     """Glob files to find .py or .iypnb Make the file list"""
 

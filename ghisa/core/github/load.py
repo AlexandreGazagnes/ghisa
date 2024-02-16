@@ -1,4 +1,7 @@
-def clone_repo(repo_url, tmp):
+import os
+
+
+def clone_repo(repo_url, tmp: str = "./tmp"):
     """Clone the repository"""
 
     if not os.path.exists(tmp):
