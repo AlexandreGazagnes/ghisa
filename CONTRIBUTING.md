@@ -2,20 +2,16 @@
 
 ## About 
 
-ghisa is an open-source project and we are always looking for more people to contribute to its development.
-
-It could be by adding new features, fixing bugs, improving the documentation, or any other way you see fit.
-
-Any help is welcome, and we will do our best to help you get started.
-
-Any feedback is also welcome.
-
-
-Pull requests are welcome.
-
-For major changes, please open an issue first to discuss what you would like to change.
+ghisa is an open-source project and we are always looking for more people to contribute to its development : 
+* It could be by adding new features, fixing bugs, improving the documentation, or any other way you see fit.
+* Any help is welcome, and we will do our best to help you get started.
+* Any feedback is also welcome.
+* Pull requests are welcome.
+* For major changes, please open an issue first to discuss what you would like to change.
 
 
+
+<br>
 
 ## Local development
 
@@ -67,36 +63,30 @@ using:
 `pytest tests`
 
 
-
+<br>
 ## Workflow
 
 
 ### About Issues
 #### Reading issues
 
-Please read the [issues page](https://alexandregazagnes.github.io/ghisa/issues/) before creating a new issue.
-
-Find a new issue to work on in the page. If you want to work on an issue, please comment on the issue to let others know that you are working on it.
+Please read the [issues page](https://alexandregazagnes.github.io/ghisa/issues/) before creating a new issue : 
+* Find a new issue to work on in the page. If you want to work on an issue, please comment on the issue to let others know that you are working on it.
 
 ####  Creating a new issue
 
-Feel free to create a new issue if you have any question, suggestion, or if you want to report a bug.
-
-You will find a template to fill in when creating a new issue.  
-
-We have carefully crafted the template to help you provide the information we need to help you.
-
-We will add relevant labels to your issue to help us keep track of it.
+Feel free to create a new issue if you have any question, suggestion, or if you want to report a bug : 
+* You will find a template to fill in when creating a new issue.
+* We have carefully crafted the template to help you provide the information we need to help you.
+* We will add relevant labels to your issue to help us keep track of it.
 
 
 #### Finding the good issue to work on  
 
-Most important issues are tagged with the `good first issue` label.
-Find relevant issues to work on by filtering the issues with the `good first issue`, `urgent`, `tricky` labels.
-
-When you find an issue you want to work on, please comment on the issue to let others know that you are working on it.
-
-You will have to make a comment to the issue in order to block it to other contributors.
+Most important issues are tagged with the `good first issue` label : 
+* Find relevant issues to work on by filtering the issues with the `good first issue`, `urgent`, `tricky` labels.
+* When you find an issue you want to work on, please comment on the issue to let others know that you are working on it.
+* You will have to make a comment to the issue in order to block it to other contributors.
 
 ### Contributing
 
