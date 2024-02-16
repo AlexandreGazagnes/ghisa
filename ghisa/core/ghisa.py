@@ -11,17 +11,16 @@ from ghisa.logger import logger
 import pandas as pd
 
 import requests
-import logging
 from bs4 import BeautifulSoup
 from .defaults import (
     DEFAULT_ASYNCHRONOUS,
     DEFAULT_DEST,
     DEFAULT_FILE,
-    DEFAULT_PROFILE_URL,
+    DEFAULT_PROFILE_NAME,
     DEFAULT_REPO_URL,
     DEFAULT_TEST_MODE,
     DEFAULT_CONFIG,
-    DEFAULT_REPO_LIMIT,
+    DEFAULT_REPO_PAGES_LIMIT,
     DEFAULT_TOP_LIBRAIRIES,
     DEFAULT_SORT,
     DEFAULT_TMP,
@@ -35,11 +34,11 @@ class Ghisa:
     DEFAULT_DEST = DEFAULT_DEST
     DEFAULT_TMP = DEFAULT_TMP
     DEFAULT_FILE = DEFAULT_FILE
-    DEFAULT_PROFILE_URL = DEFAULT_PROFILE_URL
+    DEFAULT_PROFILE_NAME = DEFAULT_PROFILE_NAME
     DEFAULT_REPO_URL = DEFAULT_REPO_URL
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
     DEFAULT_CONFIG = DEFAULT_CONFIG
-    DEFAULT_REPO_LIMIT = DEFAULT_REPO_LIMIT
+    DEFAULT_REPO_PAGES_LIMIT = DEFAULT_REPO_PAGES_LIMIT
     DEFAULT_TOP_LIBRAIRIES = DEFAULT_TOP_LIBRAIRIES
     DEFAULT_SORT = DEFAULT_SORT
 
@@ -60,7 +59,7 @@ class Ghisa:
         self.config = config if config else self.DEFAULT_CONFIG
         self.dest = dest if dest else self.DEFAULT_DEST
         self.file = file if file else self.DEFAULT_FILE
-        self.repo_limit = repo_limit if repo_limit else self.DEFAULT_REPO_LIMIT
+        self.repo_limit = repo_limit if repo_limit else self.DEFAULT_REPO_PAGES_LIMIT
         self.top_librairies = (
             top_librairies if top_librairies else self.DEFAULT_TOP_LIBRAIRIES
         )
@@ -115,7 +114,7 @@ class Ghisa:
 
 #         self.repos = get_repositories(profile)
 
-#         logging.info(self.repos)
+#         logger.info(self.repos)
 
 #         self.repo_list = []
 
@@ -124,11 +123,11 @@ class Ghisa:
 #             if not os.path.exists(self.tmp):
 #                 os.makedirs(self.tmp)
 
-#             logging.info(repo)
+#             logger.info(repo)
 
 #             dict_ = self.crawl_repo(repo)
 
-#             logging.info(f"dict_ = {dict_}")
+#             logger.info(f"dict_ = {dict_}")
 
 #             df.append(dict_)
 
@@ -138,13 +137,13 @@ class Ghisa:
 
 #         ans = make_final_data(df)
 
-#         logging.info(f"ans = {ans}")
+#         logger.info(f"ans = {ans}")
 
 #         save(ans, self.dest)
 
 #         # ans = df.sum(axis=1).sort_values(ascending=False)
 
-#         # logging.info(ans)
+#         # logger.info(ans)
 
 
 # # https://docs.python.org/3/py-modindex.html

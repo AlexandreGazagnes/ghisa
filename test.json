@@ -1,0 +1,22 @@
+{
+    "sklearn": 15.0,
+    "pandas": 11.0,
+    "views": 10.0,
+    "matplotlib": 8.0,
+    "django": 8.0,
+    "numpy": 7.0,
+    "seaborn": 6.0,
+    "evidently": 6.0,
+    "datas": 6.0,
+    "colorama": 6.0,
+    "models": 5.0,
+    "chess": 4.0,
+    "controllers": 3.0,
+    "tinydb": 3.0,
+    "operator": 3.0,
+    "sys": 3.0,
+    "pickle": 3.0,
+    "rich": 2.0,
+    "datetime": 2.0,
+    "fastapi": 2.0
+}

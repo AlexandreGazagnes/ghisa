@@ -8,16 +8,12 @@ from .local.extract import make_python_file_list
 from .local.local import make_modules_list_from_file
 from .local.helpers import counter
 from .defaults import (
-    DEFAULT_ASYNCHRONOUS,
     DEFAULT_DEST,
     DEFAULT_FILE,
-    DEFAULT_PROFILE_URL,
     DEFAULT_REPO_URL,
     DEFAULT_TEST_MODE,
     DEFAULT_CONFIG,
-    DEFAULT_REPO_LIMIT,
     DEFAULT_TOP_LIBRAIRIES,
-    DEFAULT_SORT,
     DEFAULT_TMP,
     BASE_URL,
     DEFAULT_TEST_MODE,

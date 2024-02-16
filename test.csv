@@ -1,0 +1,4 @@
+,pandas,sklearn,evidently,"warnings\n""",matplotlib,seaborn,numpy,"evidently\n""","shap\n""",imblearn,"pickle\n""","scipy\n""","os\n""",missingno,"scipy""",src,sys,setuptools,math,click,logging,pathlib,dotenv,gc,time,contextlib,lightgbm,warnings,pickle,typing,fastapi,colorama,chess,operator,datas,views,tinydb,datetime,rich,models,random,controllers,django
+0,11.0,15.0,6.0,1.0,8.0,6.0,7.0,1.0,1.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,3.0,2.0,2.0,,,,,,,,,,,,
+1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,6.0,4.0,3.0,6.0,10.0,3.0,2.0,2.0,5.0,1.0,3.0,
+2,,,,,,,,,,,,,,,,,1.0,,,,,1.0,,,,,,,,,,,,,,,,,,,,,8.0

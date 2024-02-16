@@ -26,6 +26,11 @@ def over_clean_import_statement(txt):
     # txt = txt.split(" as")[0]
 
     txt = txt.strip()
+    txt = txt.removesuffix("\n")
+    txt = txt.removesuffix("\\n")
+
+    txt = txt.removesuffix(";")
+    txt = txt.strip()
 
     logger.info("txt after clean = " + txt)
 
@@ -47,7 +52,7 @@ def clean_module_list(module_list, repo_name=None):
 
     module_list = [i for i in module_list if i not in dir(__builtins__)]
 
-    extras = ["os", "logging", "secrets"]
+    extras = ["os", "logger", "secrets"]
     module_list = [i for i in module_list if i not in extras]
 
     module_list = [i for i in module_list if i != repo_name]

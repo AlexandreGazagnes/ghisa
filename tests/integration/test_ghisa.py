@@ -5,8 +5,6 @@ Integration test the ghisa class.
 import pytest
 
 
-import logging
-
 from ghisa.core.ghisa import Ghisa
 from ghisa.logger import logger
 

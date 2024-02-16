@@ -18,7 +18,7 @@ def make_repo_list_url(profile_url, page=0, sort=None):
     """Method to make the repository list url from the profile url"""
 
     profile_url.removesuffix("/")
-    profile_url = profile_url + "/"
+    # profile_url = profile_url + "/"
 
     # https://github.com/AlexandreGazagnes?tab=repositories
 
@@ -27,7 +27,7 @@ def make_repo_list_url(profile_url, page=0, sort=None):
         repo_list_url += "&sort=stargazers"
 
     if page:
-        repo_list_url += "&page={page}"
+        repo_list_url += f"&page={page}"
 
     # TODO : AJOUTER OPTION PAS LES FORKS
 

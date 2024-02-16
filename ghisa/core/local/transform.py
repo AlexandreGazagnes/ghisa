@@ -62,7 +62,7 @@ def make_final_df(dict_list, top_librairies=20):
 
     df = pd.DataFrame(dict_list)
 
-    # logging.info(f"df = {df.to_dict(orient='records')}")
+    # logger.info(f"df = {df.to_dict(orient='records')}")
 
     ans = df.sum(axis=0).sort_values(ascending=False)
     ans = ans.head(top_librairies)
