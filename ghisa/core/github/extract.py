@@ -21,6 +21,8 @@ def make_soup(repo_list_url):
 
     soup = BeautifulSoup(response.text, "html.parser")
 
+    logger.info(f"soup for {repo_list_url} : {soup[:1000]}")
+
     return soup
 
 
@@ -32,6 +34,9 @@ def extract_repositories(soup, profile_url):
     repos = [repo.text for repo in repos]
 
     # repos = [repo.href for repo in repos]
+
+    if not repos:
+        raise AttributeError(f"no repositories found on page soup of {profile_url}")
 
     logger.info(repos)
 

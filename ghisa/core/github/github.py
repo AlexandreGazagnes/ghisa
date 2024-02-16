@@ -16,6 +16,11 @@ def get_repositories_from_a_page(profile, page=0, sort=None):
     soup = make_soup(repo_list_url)
     repos = extract_repositories(soup, profile_url)
 
+    if not repos:
+        raise AttributeError(f"no repositories found on page {page} of {profile}")
+
+    logger.info(f" Repositories from page {page}  of {profile}: {repos}")
+
     return repos
 
 
@@ -29,4 +34,5 @@ def get_repositories_from_profile(profile, pages=0, sort=None):
             continue
         repos += get_repositories_from_a_page(profile, page=page, sort=sort)
 
+    logger.info(repos)
     return repos

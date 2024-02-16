@@ -22,7 +22,7 @@ def make_repo_list_url(profile_url, page=0, sort=None):
 
     # https://github.com/AlexandreGazagnes?tab=repositories
 
-    repo_list_url = make_profile_url + "?tab=repositories"
+    repo_list_url = profile_url + "?tab=repositories"
     if sort == "stars":
         repo_list_url += "&sort=stargazers"
 
