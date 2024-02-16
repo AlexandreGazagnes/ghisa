@@ -22,9 +22,9 @@ def get_repositories_from_a_page(profile_name, page=0, sort=None):
             f"no repositories found on page {page}   of {profile_name} {profile_url} and {repo_list_url}: "
         )
 
-    # logger.info(
-    #     f" Repositories from page {page}  of {profile_name} {profile_url} and {repo_list_url}: {repos}"
-    # )
+    logger.debug(
+        f" Repositories from page {page}  of {profile_name} {profile_url} and {repo_list_url}: {repos}"
+    )
 
     return repos
 
@@ -35,13 +35,12 @@ def get_repositories_from_profile(profile_name, pages=1, sort=None):
     repos = []
 
     for page in range(1, pages + 1):
-        # if page == 0:
-        #     continue
         try:
             repos += get_repositories_from_a_page(profile_name, page=page, sort=sort)
         except AttributeError as e:
             logger.error(e)
             break
 
-    logger.info(repos)
+    logger.debug(repos)
+
     return repos

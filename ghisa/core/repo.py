@@ -72,6 +72,12 @@ class Repo:
     def _run(self):
         """ """
 
+        # TODO : add github module
+
+        # TODO : add a validator
+
+        # TODO : add if is_forked => NO
+
         self._manage_repo()
         self._clone_repo()
         self._count_imports()
@@ -129,9 +135,6 @@ class Repo:
 
         self._file_list = make_python_file_list(self.tmp)
 
-        # if not self._file_list:
-        #     raise ValueError(f"No python files found in {self.dest}")
-
         modules = []
         for file in self._file_list:
             modules.extend(make_modules_list_from_file(file, self.repo_name))
@@ -169,12 +172,3 @@ class Repo:
 
     def __repr__(self):
         return f"{self.__dict__}"
-
-    # def _is_forked(self):
-
-    #     out = is_forked(self.repo_url)
-    #     self.is_forked(out)
-
-
-# if __name__ == "__main__":
-#     repo = Repo()

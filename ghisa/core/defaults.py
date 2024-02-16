@@ -4,7 +4,7 @@ Default values and constants.
 
 DEFAULT_DEST = "./tmp"
 DEFAULT_TMP = "./tmp"
-DEFAULT_FILE = "list.txt"
+DEFAULT_FILE = "list.json"
 
 DEFAULT_OUTPUT = "json"
 

@@ -58,7 +58,7 @@ class Profile:
 
     def __init__(
         self,
-        profile_name=None,
+        profile_name,
         dest=None,
         file=None,
         top_librairies=None,
@@ -112,7 +112,9 @@ class Profile:
             raise NotImplementedError("Asynchronous mode not implemented yet")
 
     def _get_repo_list(self):
-        """ """
+        """Get the list of repositories from the profile page"""
+
+        # TODO use github module wrapper instead of direct call to get_repositories_from_profile
 
         # TODO : avoid to get all the repos if repo_number_limit is set
         # manage repo_pages_limit vs repo_number_limit
@@ -130,10 +132,11 @@ class Profile:
             self.repo_list_url = self.repo_list_url[: self.repo_number_limit]
 
     def _make_repo_objects(self):
-        """ """
+        """Make the repo objects from the repo list url"""
 
         for repo_url in self.repo_list_url:
             # TODO: not good to catch all exceptions
+
             try:
                 repo = Repo(repo_url)
                 self.repo_list_object.append(repo)
@@ -142,11 +145,11 @@ class Profile:
                 continue
 
     def _count_imports(self):
-        """ """
+        """Count the imports from the repo objects"""
 
         li = [repo.module_dict for repo in self.repo_list_object]
 
         ans = make_final_df(li, top_librairies=self.top_librairies)
 
         logger.warning(f"ans is :{ans}")
-        save(ans, "test.json")
+        save(ans, self.file)

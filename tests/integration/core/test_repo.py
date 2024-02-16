@@ -5,6 +5,7 @@ Test the Repo class.
 import pytest
 
 from ghisa.core import Repo
+from ghisa.logger import logger
 
 
 class TestRepoIntegration:
@@ -19,3 +20,5 @@ class TestRepoIntegration:
 
         with open("repo.txt", "w") as f:
             f.write(str(repo.module_dict))
+
+        logger.info(f"repo.__dict__ : {repo.__dict__}")

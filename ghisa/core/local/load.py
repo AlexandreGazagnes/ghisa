@@ -7,21 +7,20 @@ import json
 import pandas as pd
 
 
-def save(ans, dest, out="json"):
+def save(ans, dest):
     """Save the ans to the destination file."""
 
-    if out == "json":
+    if "json" in dest:
         with open(dest, "w") as f:
-            # f.write(str(ans))
             json.dump(ans, f)
 
-    elif out == "csv":
+    elif "csv" in dest:
         df = pd.DataFrame({"counts": ans})
         df.to_csv(dest, index=False)
 
-    elif out == "txt":
+    elif "txt" in dest:
         with open(dest, "w") as f:
             f.write(str(ans))
 
     else:
-        raise ValueError(f"Expected {out} to be in ['json', 'csv', 'txt']")
+        raise ValueError(f"Expected {dest}  extension to be in ['json', 'csv', 'txt']")

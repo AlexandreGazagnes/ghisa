@@ -6,9 +6,10 @@ import os
 
 import streamlit.web.cli as cli
 from cleo.commands.command import Command
-from cleo.helpers import argument, option
 
 from ghisa.gui.front import *
+
+# from cleo.helpers import argument, option
 
 
 class GuiCommand(Command):

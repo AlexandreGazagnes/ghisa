@@ -13,7 +13,7 @@ from .extract import get_folder_list
 def over_clean_import_statement(txt):
     """Clean the import statement"""
 
-    # logger.info("txt before clean = " + txt)
+    logger.debug("txt before clean = " + txt)
 
     txt = txt.strip()
     if txt.startswith("import "):
@@ -37,7 +37,7 @@ def over_clean_import_statement(txt):
 
     # TODO: enmable package selection : only if in pypi_list
 
-    # logger.info("txt after clean = " + txt)
+    logger.debug("txt after clean = " + txt)
 
     return txt
 

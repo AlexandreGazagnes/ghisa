@@ -1,3 +1,0 @@
-"""
-Scrap module
-"""

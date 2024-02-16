@@ -8,4 +8,4 @@ from .core.ghisa import Ghisa
 from .core.profile import Profile
 from .core.repo import Repo
 
-__all__ = ["Ghisa"]
+__all__ = ["Ghisa", "Profile", "Repo"]

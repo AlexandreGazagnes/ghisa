@@ -27,8 +27,6 @@ from ghisa.logger import logger
 # from ghisa.core.ghisa import Ghisa
 
 
-
-
 class RepoCommand(Command):
     name = "run repo"
 

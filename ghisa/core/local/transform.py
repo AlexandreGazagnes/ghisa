@@ -10,6 +10,8 @@ from .helpers import over_clean_import_statement
 
 
 def __transform_from_mode(txt):
+    """Extract the module name from an import line in from mode"""
+
     if txt.startswith("from ."):
         return []
 
@@ -21,6 +23,8 @@ def __transform_from_mode(txt):
 
 
 def __transform_import_mode(txt):
+    """Extract the module name from an import line in import mode"""
+
     if txt.startswith("import ."):
         return []
 
@@ -51,22 +55,17 @@ def transform_import_line(txt):
         raise AttributeError(f"line code not starting with import or from : {txt}")
 
 
-"""
-Transform module
-"""
-
-
 def make_final_df(dict_list, top_librairies=20):
     """Make the final dataframe from the list of dictionaries of modules used in the files of the repository"""
 
     df = pd.DataFrame(dict_list)
 
-    # logger.info(f"df = {df.to_dict(orient='records')}")
+    logger.debug(f"df = {df.to_dict(orient='records')}")
 
     ans = df.sum(axis=0).sort_values(ascending=False)
     ans = ans.head(top_librairies)
     ans = ans.to_dict()
 
-    logger.info(f"final ans = {ans}")
+    logger.debug(f"final ans = {ans}")
 
     return ans

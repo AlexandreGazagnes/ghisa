@@ -5,28 +5,15 @@ ProfileCommand
 from cleo.commands.command import Command
 from cleo.helpers import argument, option
 
-from ghisa.core.defaults import (
-    DEFAULT_ASYNCHRONOUS,
-    DEFAULT_CONFIG,
+from ghisa.core.defaults import (  # DEFAULT_ASYNCHRONOUS,; DEFAULT_TEST_MODE,; DEFAULT_TMP,; DEFAULT_TOP_LIBRAIRIES,; DEFAULT_CONFIG,; DEFAULT_FORCE_UNIQUE,; DEFAULT_SORT,; DEFAULT_REPO_PAGES_LIMIT,; DEFAULT_REPO_NUMBER_LIMIT,; DEFAULT_PROFILE_NAME,; DEFAULT_EXCLUDE_FORKS,
     DEFAULT_DEST,
-    DEFAULT_EXCLUDE_FORKS,
     DEFAULT_FILE,
-    DEFAULT_FORCE_UNIQUE,
     DEFAULT_OUTPUT,
-    DEFAULT_PROFILE_NAME,
-    DEFAULT_REPO_NUMBER_LIMIT,
-    DEFAULT_REPO_PAGES_LIMIT,
-    DEFAULT_SORT,
-    DEFAULT_TEST_MODE,
-    DEFAULT_TMP,
-    DEFAULT_TOP_LIBRAIRIES,
 )
 from ghisa.core.profile import Profile
 from ghisa.logger import logger
 
 # from ghisa.core.ghisa import Ghisa
-
-
 
 
 class ProfileCommand(Command):
@@ -84,7 +71,6 @@ class ProfileCommand(Command):
         output = self.option("output")
 
         # flags options
-        # search = self.option("search")
         asynchronous = self.option("asynchronous")
 
         # # useless logging

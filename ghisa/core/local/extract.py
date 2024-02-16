@@ -20,22 +20,16 @@ def make_python_file_list(self, tmp: str = "./tmp"):
 
     # notebooks
     query1 = os.path.join(tmp, "**/*.ipynb")
-    # query1 = tmp + "**/*.ipynb"
     l1 = glob.glob(query1, recursive=True)
 
     # python files
     query2 = os.path.join(tmp, "**/*.py")
-    # query2 = tmp + "**/*.py"
     l2 = glob.glob(query2, recursive=True)
 
-    file_list = l1 + l2
-
-    return file_list
+    return l1 + l2
 
 
-def get_imports_line_from_file(
-    filename,
-):
+def get_imports_line_from_file(filename):
     """Get the import lines from a file"""
 
     with open(filename, "r") as f:

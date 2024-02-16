@@ -19,3 +19,5 @@ class TestProfileIntegration:
             repo_number_limit=100,
             profile_name="AlexandreGazagnes",
         )
+
+        logger.info(f"profile.__dict__ : {profile.__dict__}")

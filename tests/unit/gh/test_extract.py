@@ -1,6 +1,10 @@
+"""
+Unit tests for the extract module.
+"""
+
 import pytest
 
-from ghisa.core.github.extract import extract_repositories, make_soup
+from ghisa.core.gh.extract import extract_repositories, make_soup
 from ghisa.logger import logger
 
 

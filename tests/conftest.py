@@ -17,6 +17,8 @@ from ghisa.core.ghisa import Ghisa
 
 
 def pytest_sessionstart(session):
+    """session start"""
+
     if os.path.exists(Ghisa.DEFAULT_TMP):
         shutil.rmtree(Ghisa.DEFAULT_TMP)
 
