@@ -11,9 +11,9 @@ homepage = "https://alexandregazagnes.github.io/ghisa/"
 repository = "https://github.com/AlexandreGazagnes/ghisa/"
 documentation = "https://alexandregazagnes.github.io/ghisa/"
 
-keywords=["python", "git", "tool", "utils", "github", "stats", "analyzer", "import", "export", "data", "analysis"]
+keywords=["python", "git", "tool", "utils", "github", "stats", "analyzer", "import", "export", "data", "analysis",]
 classifiers = [
-    "License :: OSI Approved :: BSD 3-Clause License",
+    "License :: OSI Approved :: BSD License",
     "Intended Audience :: Developers",
     "Intended Audience :: Education",
     "Intended Audience :: Information Technology",
