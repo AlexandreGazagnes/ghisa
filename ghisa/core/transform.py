@@ -1,16 +1,8 @@
-import os
-import glob
+"""
+Transform module
+"""
 
-import collections
-
-from ghisa.logger import logger
-
-
-def counter(li):
-
-    c = collections.Counter(li)
-
-    return dict(c)
+import pandas as pd
 
 
 def _over_clean(txt):
@@ -67,6 +59,14 @@ def extract_from_import_line(txt):
     )
 
 
+def extract_from_import_line(txt):
+    """Extract the module name from an import line"""
+
+    return (
+        _extract_from_mode(txt) if txt.startswith("from") else _extract_normal_mode(txt)
+    )
+
+
 def parse_a_file(fn):
     """Parse a file"""
 
@@ -86,3 +86,17 @@ def parse_a_file(fn):
     # logger.info(f"") = modules
 
     return modules
+
+
+def make_final_data(df, top=20):
+
+    df = pd.DataFrame(df)
+
+    # logging.info(f"df = {df.to_dict(orient='records')}")
+
+    ans = df.sum(axis=0).sort_values(ascending=False)
+    ans = ans.head(top)
+
+    ans = ans.to_dict()
+
+    return ans

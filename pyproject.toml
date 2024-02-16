@@ -62,6 +62,7 @@ python = "3.10.12"
 beautifulsoup4 = "^4.12.3"
 requests = "^2.31.0"
 pandas = "^2.2.0"
+ipython = "^8.21.0"
 
 
 [tool.poetry.group.dev.dependencies]

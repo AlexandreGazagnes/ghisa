@@ -7,6 +7,7 @@ import glob
 
 import shutil
 
+from ghisa.logger import logger
 import pandas as pd
 
 import requests
@@ -25,15 +26,26 @@ class Ghisa:
 
     DEFAULT_DEST = "./result.txt"
 
-    def __init__(self, config={}, tmp=None, test_mode=False, limit=20, dest=None):
+    def __init__(
+        self,
+        config={},
+        tmp=None,
+        test_mode=False,
+        limit=20,
+        dest=None,
+        top=20,
+        sort="stargazers",
+    ):
         """Constructor of the class. It takes the url of the website to be"""
 
         # self.url = url
         self.config = config
         self.dest = dest if dest else self.DEFAULT_DEST
 
+        self.top = top
         self.limit = limit
         self.test_mode = test_mode
+        self.sort = sort
         self.url = ""
         self.repo_url = ""
         self.repo_name = ""
@@ -78,10 +90,15 @@ class Ghisa:
         self.repo_name = f"./{self.tmp}/"
 
     def _make_file_list(self):
-        """Make the file list"""
+        """Glob files to find .py or .iypnb Make the file list"""
 
-        query2 = self.repo_name + self.pattern
-        self.file_list = glob.glob(query2, recursive=True)
+        query1 = self.repo_name + "**/*.ipynb"
+        l1 = glob.glob(query1, recursive=True)
+
+        query2 = self.repo_name + "**/*.py"
+        l2 = glob.glob(query2, recursive=True)
+
+        self.file_list = l1 + l2
 
     def _count_imports(self):
         """Count the imports"""
@@ -96,17 +113,16 @@ class Ghisa:
 
         return counter(import_list)
 
-    def craw_profile(self, url):
+    def craw_profile(self, profile):
         """Method to crawl the profile"""
 
         df = []
 
-        self.profile_url = url
+        self.profile = profile
 
-        soup = make_soup(url)
-        repos = extract_repositories(soup, url)
+        self.repos = get_repositories(profile)
 
-        logging.info(repos)
+        logging.info(self.repos)
 
         self.repo_list = []
 
@@ -117,31 +133,25 @@ class Ghisa:
 
             logging.info(repo)
 
-            try:
-                dict_ = self.crawl_repo(repo)
+            dict_ = self.crawl_repo(repo)
 
-                logging.info(dict_)
+            logging.info(f"dict_ = {dict_}")
 
-                df.append(dict_)
+            df.append(dict_)
 
-                shutil.rmtree(self.tmp)
+            shutil.rmtree(self.tmp)
 
-                self.repo_list.append(repo)
+            self.repo_list.append(repo)
 
-            except Exception as e:
-                logging.error(e)
+        ans = make_final_data(df)
 
-        df = pd.DataFrame(df)
+        logging.info(f"ans = {ans}")
 
-        logging.info(df)
-
-        ans = df.sum(axis=0).sort_values(ascending=False)
-
-        logging.info(ans)
-
-        with open(self.dest, "w") as f:
-            f.write(str(ans))
+        save(ans, self.dest)
 
         # ans = df.sum(axis=1).sort_values(ascending=False)
 
         # logging.info(ans)
+
+
+# https://docs.python.org/3/py-modindex.html
