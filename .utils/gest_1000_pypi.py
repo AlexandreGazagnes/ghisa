@@ -1,3 +1,9 @@
+"""
+Python script to get the top 1000 packages from 
+pypi and save them to a file
+"""
+
+import logging
 import requests
 from bs4 import BeautifulSoup
 
@@ -14,11 +20,13 @@ def main():
 
     li = soup.find_all("a", {"class": "mr-1"})
 
-    li2 = [i.text for i in li if i.text != ""]
+    li = [i.text for i in li if i.text != ""]
 
-    with open(".utils/top_packages.txt", "w") as f:
-        txt = "\n".join(li2)
-        f.write(txt)
+    print(li)
+
+    # with open(".utils/top_packages.txt", "w") as f:
+    #     txt = "\n".join(li)
+    #     f.write(txt)
 
 
 if __name__ == "__main__":
