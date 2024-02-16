@@ -2,18 +2,21 @@
 Exctract module
 """
 
+import os
 from ghisa.logger import logger
 
 import glob
 
 
-def make_python_file_list(self, repo_name):
+def make_python_file_list(self, tmp: str = "./tmp"):
     """Glob files to find .py or .iypnb Make the file list"""
 
-    query1 = repo_name + "**/*.ipynb"
+    query1 = os.path.join(tmp, "**/*.ipynb")
+    # query1 = tmp + "**/*.ipynb"
     l1 = glob.glob(query1, recursive=True)
 
-    query2 = repo_name + "**/*.py"
+    query2 = os.path.join(tmp, "**/*.py")
+    # query2 = tmp + "**/*.py"
     l2 = glob.glob(query2, recursive=True)
 
     file_list = l1 + l2

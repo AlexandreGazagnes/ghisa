@@ -18,7 +18,7 @@ from .defaults import (
     DEFAULT_DEST,
     DEFAULT_FILE,
     DEFAULT_PROFILE_URL,
-    DEFAULT_PROJECT_URL,
+    DEFAULT_REPO_URL,
     DEFAULT_TEST_MODE,
     DEFAULT_CONFIG,
     DEFAULT_REPO_LIMIT,
@@ -33,10 +33,10 @@ class Ghisa:
 
     DEFAULT_ASYNCHRONOUS = DEFAULT_ASYNCHRONOUS
     DEFAULT_DEST = DEFAULT_DEST
-    # DEFAULT_TMP = DEFAULT_TMP
+    DEFAULT_TMP = DEFAULT_TMP
     DEFAULT_FILE = DEFAULT_FILE
     DEFAULT_PROFILE_URL = DEFAULT_PROFILE_URL
-    DEFAULT_PROJECT_URL = DEFAULT_PROJECT_URL
+    DEFAULT_REPO_URL = DEFAULT_REPO_URL
     DEFAULT_TEST_MODE = DEFAULT_TEST_MODE
     DEFAULT_CONFIG = DEFAULT_CONFIG
     DEFAULT_REPO_LIMIT = DEFAULT_REPO_LIMIT
@@ -52,6 +52,7 @@ class Ghisa:
         sort=None,
         test_mode=True,
         config=None,
+        tmp=None,
     ):
         """Constructor of the class. It takes the url of the website to be"""
 
@@ -65,7 +66,7 @@ class Ghisa:
         )
         self.sort = sort if sort else self.DEFAULT_SORT
         self.test_mode = test_mode if test_mode else self.DEFAULT_TEST_MODE
-
+        self.tmp = tmp if tmp else self.DEFAULT_TMP
         self.url = ""
         self.repo_url = ""
         self.repo_name = ""
@@ -76,73 +77,74 @@ class Ghisa:
 
         # self.tmp: str = self.DEFAULT_TMP if not tmp else tmp
 
-    def crawl_repo(self, name_or_url):
-        """Method to crawl the repository"""
 
-        repo_url = manage_name_or_url(name_or_url)
+#     def crawl_repo(self, name_or_url):
+#         """Method to crawl the repository"""
 
-        # self.repo_url = url
+#         repo_url = manage_name_or_url(name_or_url)
 
-        # self._clone_repo(url)
+#         # self.repo_url = url
 
-        # self._make_file_list()
+#         # self._clone_repo(url)
 
-        # imports = self._count_imports()
+#         # self._make_file_list()
 
-        # return imports
+#         # imports = self._count_imports()
 
-    def _count_imports(self):
-        """Count the imports"""
+#         # return imports
 
-        import_list = []
-        for fn in self.file_list:
+#     def _count_imports(self):
+#         """Count the imports"""
 
-            lines = get_import(fn)
-            modules = [extract_from_import_line(i) for i in lines]
+#         import_list = []
+#         for fn in self.file_list:
 
-            import_list.extend(modules)
+#             lines = get_import(fn)
+#             modules = [extract_from_import_line(i) for i in lines]
 
-        return counter(import_list)
+#             import_list.extend(modules)
 
-    def craw_profile(self, profile):
-        """Method to crawl the profile"""
+#         return counter(import_list)
 
-        df = []
+#     def craw_profile(self, profile):
+#         """Method to crawl the profile"""
 
-        self.profile = profile
+#         df = []
 
-        self.repos = get_repositories(profile)
+#         self.profile = profile
 
-        logging.info(self.repos)
+#         self.repos = get_repositories(profile)
 
-        self.repo_list = []
+#         logging.info(self.repos)
 
-        for repo in repos[: self.limit]:
+#         self.repo_list = []
 
-            if not os.path.exists(self.tmp):
-                os.makedirs(self.tmp)
+#         for repo in repos[: self.limit]:
 
-            logging.info(repo)
+#             if not os.path.exists(self.tmp):
+#                 os.makedirs(self.tmp)
 
-            dict_ = self.crawl_repo(repo)
+#             logging.info(repo)
 
-            logging.info(f"dict_ = {dict_}")
+#             dict_ = self.crawl_repo(repo)
 
-            df.append(dict_)
+#             logging.info(f"dict_ = {dict_}")
 
-            shutil.rmtree(self.tmp)
+#             df.append(dict_)
 
-            self.repo_list.append(repo)
+#             shutil.rmtree(self.tmp)
 
-        ans = make_final_data(df)
+#             self.repo_list.append(repo)
 
-        logging.info(f"ans = {ans}")
+#         ans = make_final_data(df)
 
-        save(ans, self.dest)
+#         logging.info(f"ans = {ans}")
 
-        # ans = df.sum(axis=1).sort_values(ascending=False)
+#         save(ans, self.dest)
 
-        # logging.info(ans)
+#         # ans = df.sum(axis=1).sort_values(ascending=False)
+
+#         # logging.info(ans)
 
 
-# https://docs.python.org/3/py-modindex.html
+# # https://docs.python.org/3/py-modindex.html

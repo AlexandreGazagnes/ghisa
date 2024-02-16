@@ -40,11 +40,16 @@ def __transform_import_mode(txt):
 def transform_import_line(txt):
     """Extract the module name from an import line"""
 
-    return (
-        __transform_from_mode(txt)
-        if txt.startswith("from")
-        else __transform_import_mode(txt)
-    )
+    txt = txt.strip()
+
+    if txt.startswith("import"):
+        return __transform_import_mode(txt)
+
+    elif txt.startswith("from"):
+        return __transform_from_mode(txt)
+
+    else:
+        raise AttributeError(f"line code not starting with import or from : {txt}")
 
 
 """

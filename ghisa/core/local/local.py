@@ -5,7 +5,8 @@ Local module
 from .extract import get_imports_line_from_file
 
 from .transform import transform_import_line
-from .helpers import denest_module_list, clean_module_list, counter
+from .helpers import clean_module_list, counter
+from ..helpers import denest
 
 
 def make_modules_list_from_file(filename, repo_name) -> list:
@@ -15,7 +16,7 @@ def make_modules_list_from_file(filename, repo_name) -> list:
 
     nested_modules = [transform_import_line(i) for i in lines]
 
-    modules = denest_module_list(nested_modules)
+    modules = denest(nested_modules)
 
     modules = clean_module_list(modules, repo_name=repo_name)
 

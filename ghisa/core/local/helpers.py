@@ -13,6 +13,10 @@ def over_clean_import_statement(txt):
     logger.info("txt before clean = " + txt)
 
     txt = txt.strip()
+    if txt.startswith("import "):
+        txt = txt.removeprefix("import ")
+
+    txt = txt.strip()
     txt = txt.split(" as")[0]
 
     txt = txt.strip()
@@ -40,9 +44,10 @@ def counter(module_list):
 def clean_module_list(module_list, repo_name=None):
 
     module_list = [i for i in module_list if i]
+
     module_list = [i for i in module_list if i not in dir(__builtins__)]
 
-    extras = ["os"]
+    extras = ["os", "logging", "secrets"]
     module_list = [i for i in module_list if i not in extras]
 
     module_list = [i for i in module_list if i != repo_name]

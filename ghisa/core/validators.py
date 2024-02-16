@@ -9,7 +9,7 @@ from ghisa.logger import logger
 from abc import ABC, abstractmethod
 
 
-from ghisa.core.defaults import DEFAULT_CONFIG
+# from ghisa.core.defaults import DEFAULT_CONFIG
 
 
 class Validator(ABC):

@@ -51,15 +51,15 @@ def make_git_repo_url(profile_url, repo_name, ext=".git"):
     return repo_url
 
 
-def manage_name_or_url(name_or_url):
+# def manage_name_or_url(name_or_url):
 
-    name_or_url = name_or_url.strip()
+#     name_or_url = name_or_url.strip()
 
-    name_or_url = name_or_url.removesuffix(".git")
-    name_or_url = name_or_url.removesuffix("/")
+#     name_or_url = name_or_url.removesuffix(".git")
+#     name_or_url = name_or_url.removesuffix("/")
 
-    if "/tree/" in name_or_url:
-        name_or_url = name_or_url.split("/tree/")[0]
+#     if "/tree/" in name_or_url:
+#         name_or_url = name_or_url.split("/tree/")[0]
 
-    if name_or_url.startswith("https://github/com"):
-        name_or_url.split("/")[0]
+#     if name_or_url.startswith("https://github/com"):
+#         name_or_url.split("/")[0]
