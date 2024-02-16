@@ -15,7 +15,7 @@ It is recommended to use a virtual environment to install the package.
 Installing the package :
 
 ```bash
-pip install the-package [--upgrade] [--user]
+pip install ghisa [--upgrade] [--user]
 
 ```
 
@@ -26,7 +26,7 @@ It is recommended to use a virtual environment to install the package.
 ```bash
 pip install poetry
 poetry init
-poetry add the-package
+poetry add ghisa
 ```
 
 
@@ -36,11 +36,11 @@ poetry add the-package
 You can check the installation by running the following command :
 
 ```bash
-pip show the-package
+pip show ghisa
 ```
 
 or
 
 ```bash
-pip list | grep the-package
+pip list | grep ghisa
 ```

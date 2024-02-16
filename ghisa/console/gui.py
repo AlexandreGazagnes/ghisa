@@ -4,12 +4,12 @@ GUI Command
 
 import os
 
-from cleo.commands.command import Command
-from cleo.helpers import argument, option
-
 import streamlit.web.cli as cli
+from cleo.commands.command import Command
 
 from ghisa.gui.front import *
+
+# from cleo.helpers import argument, option
 
 
 class GuiCommand(Command):

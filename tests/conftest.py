@@ -3,37 +3,24 @@ Fixtures for the tests
 """
 
 import os
+import shutil
 
 import pytest
 
-from ghisa.logger import logger
-from ghisa.core.ghisa import ghisa
+from ghisa.core.ghisa import Ghisa
+
+# @pytest.fixture
+# def my_fixture() -> None:
 
 
-VIDEO_URL = "https://www.youtube.com/watch?v=9diaThxYnKA"
-VIDEO_ID = "V62oKsHdsLU"
-VIDEO_QUERY = "jo l'rigolo"
-
-
-@pytest.fixture
-def list_queries() -> list:
-    """List of video queries"""
-
-    return []
+#     return None
 
 
 def pytest_sessionstart(session):
-    """
-    Called after the Session object has been created and
-    before performing collection and entering the run test loop.
-    """
+    """session start"""
 
-    if os.path.exists(ghisa.DEFAULT_TMP):
-        for file in os.listdir(ghisa.DEFAULT_TMP):
-            os.remove(ghisa.DEFAULT_TMP + file)
-        os.rmdir(ghisa.DEFAULT_TMP)
+    if os.path.exists(Ghisa.DEFAULT_TMP):
+        shutil.rmtree(Ghisa.DEFAULT_TMP)
 
-    if not os.path.exists(ghisa.DEFAULT_TMP):
-        os.makedirs(ghisa.DEFAULT_TMP)
-
-    pass
+    if not os.path.exists(Ghisa.DEFAULT_TMP):
+        os.makedirs(Ghisa.DEFAULT_TMP)
