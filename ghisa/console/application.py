@@ -4,8 +4,9 @@ Console Application
 
 from cleo.application import Application
 
-from ghisa.console.gui import GuiCommand
-from ghisa.console.run import RunCommand
+from .gui import GuiCommand
+from .repo import RepoCommand
+from .profile import ProfileCommand
 
 # from cleo.commands.command import Command
 # from cleo.helpers import argument, option
@@ -23,21 +24,29 @@ from ghisa.console.run import RunCommand
 
 
 def main() -> int:
+    """Main function of the console application"""
+
+    # app
     application = Application()
 
+    # commands
     application.add(GuiCommand())
-    application.add(RunCommand())
+    application.add(RepoCommand())
+    application.add(ProfileCommand())
 
+    # run
     exit_code: int = Application().run()
+
     return exit_code
 
 
 if __name__ == "__main__":
-    application = Application()
 
-    application.add(GuiCommand())
-    application.add(RunCommand())
+    # application = Application()
+    # application.add(GuiCommand())
+    # application.add(ProfileCommand())
+    # application.add(RepoCommand())
 
-    application.run()
+    # application.run()
 
     main()
