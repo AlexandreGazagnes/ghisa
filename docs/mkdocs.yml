@@ -1,6 +1,6 @@
 site_name: ghisa
 
-site_description:  "ghisa : Just a new app ! "
+site_description:  "ghisa : Github Import Statistic Analyzer for pythonistas "
 theme: readthedocs
 
 site_url: https://alexandregazagnes.github.io/ghisa/
@@ -14,7 +14,7 @@ extra:
 nav:
   - Home: index.md
   - Installation : installation.md
-  - Usage : usage.md
+  # - Usage : usage.md
   # - API Reference : api-reference.md
   - Contributing : contributing.md
   - Changelog : changelog.md
