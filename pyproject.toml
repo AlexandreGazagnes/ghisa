@@ -64,13 +64,13 @@ streamlit = "^1.29.0"
 
 [tool.poetry.group.dev.dependencies]
 python = "3.10.12"
-black = "^23.10.1"
+black = ">=23.10.1,<25.0.0"
 ipython = "^8.18.1"
 pre-commit = "^3.6.0"
 
 
 # [tool.poetry.group.notebook.dependencies]
-# black = {extras = ["jupyter"], version = "^23.12.1"}
+# black = {extras = ["jupyter"], version = ">=23.12.1,<25.0.0"}
 # jupyter = "^1.0.0"
 # notebook = "^7.0.6"
 # jupyterlab = "^4.0.10"
